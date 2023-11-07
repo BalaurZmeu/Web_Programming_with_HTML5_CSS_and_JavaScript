@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<!--
+▸▸### Include at least one heading (h1, h2, etc.) in your web page.
+▸▸### Display a code fragment from the program, or display the whole program, if appropriate.
+Feel free to create the program yourself or use a program that you find in a book or on the
+Internet.
+▸▸### Refer to a specific variable in the program, specific input, and specific output.
+▸▸### Provide a quote from a book that refers to the program or to a concept illustrated by the
+program, and provide a citation for the book’s title. Feel free to use a real quote from a real
+book or make up a fictional quote from a fictional book.
+▸▸### Provide an acronym (real or made up) or a definition that somehow relates to the web
+page’s discussion.
+▸▸### (7) Include a total of at least 10 different types of phrasing elements in your web page. You
+must use appropriate phrasing elements that fit the flow of your web page. You will lose
+points if any of your elements are inappropriate (e.g., using wbr in a normal-length word).
+-->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Balaur Zmeu">
+  <title>Program with Explanation</title>
+  <style>
+    .green { background-color: lightgreen; }
+    .yellow { background-color: yellow; }
+    .pink { background-color: pink; }
+    .blue { background-color: lightblue; }
+    .red { background-color: sandybrown; }
+  </style>
+</head>
+
+<body>
+  <h3>Greeting Program Using JavaScript</h3>
+  <hr>
+  <p>
+    Here's a simple example of an 
+    <abbr title="Hypertext Markup Language">HTML</abbr> and 
+    JavaScript code snippet that creates a page with an input 
+    field for the user's name. When the user types their name and clicks 
+    the "Submit" button, it will display the 
+    greeting "Hello, [<var>name</var>]".
+  </p>
+  <p>
+    When you open this HTML page in a browser, it will allow you 
+    to enter your name, for example <kbd>Valery</kbd>, and upon submission, 
+    it will display the greeting message <samp>Hello, Valery!</samp> on the same page.  
+  </p>
+  <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+    &lt;head&gt;
+      &lt;title&gt;Simple Greeting Page&lt;/title&gt;
+      &lt;meta charset="utf-8"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Enter your name:&lt;/h1&gt;
+      &lt;<span class="green">form</span> id="nameForm"&gt;
+        &lt;input type="text" id="nameInput" placeholder=<span class="green">"Your Name"</span>&gt;
+        &lt;input type="submit" value=<span class="green">"Submit"</span>&gt;
+      &lt;/form&gt;
+
+      <span class="yellow">&lt;div id="greeting" style="display: none;"&gt;</span>
+        &lt;h2&gt;Greeting:&lt;/h2&gt;
+        <span class="blue">&lt;p id="greetingText"&gt;&lt;/p&gt;</span>
+      &lt;/div&gt;
+
+      &lt;script&gt;
+        document.getElementById("nameForm").addEventListener("submit", function (event) {
+            <span class="pink">event.preventDefault();</span> // Prevent form submission
+            <span class="green">var name = document.getElementById("nameInput").value;</span>
+            <span class="red">var greetingText = "Hello, " + name + "!";</span>
+            <span class="blue">document.getElementById("greetingText").textContent = greetingText;</span>
+            <span class="yellow">document.getElementById("greeting").style.display = "block";</span>
+        });
+      &lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  </code></pre>
+  <p>
+    In this code:<br>
+    We have an input field with the placeholder <span class="green">"Your Name"</span> 
+    and a <span class="green">"Submit"</span> button inside a <span class="green">form</span> element.
+    When the user submits the form, the JavaScript code prevents 
+    the default form submission behavior using <span class="pink">event.preventDefault()</span>.
+    It then retrieves the value entered in the input field, 
+    <span class="red">constructs the greeting message</span>, and displays it in a <span class="blue">&lt;p&gt;</span> 
+    element with the <span class="blue">id "greetingText."</span>
+    The <span class="yellow">"greeting" &lt;div&gt; element</span> is initially hidden with 
+    <span class="yellow">style="display: none;"</span> and is set to be displayed 
+    <span class="yellow">(style.display = "block";)</span> after the user submits the form.
+  </p>
+  <p>
+    This program contains embedded Cascading Style Sheets (<dfn>CSS</dfn>) code.
+    It's just a simplified example of how JavaScript can be used to 
+    interact with the HTML page.
+  </p>
+  <p>
+    The code was created using requirements provided in the 
+    book <cite>"Web Programming with HTML, CSS, and JavaScript"</cite> by John Dean:
+  </p>
+  <pre><blockquote>
+    "Create a web page with a filename of pgmExplanation.html that explains something inter-
+    esting about a program. Your explanation must make sense. You must use grammatically correct
+    sentences that provide a reasonable flow through your web page. Creativity and aesthetics are part
+    of web programming, and they are part of this assignment. Follow these guidelines:
+        ▸▸ Include at least one heading (h1, h2, etc.) in your web page.
+        ▸▸ Display a code fragment from the program, or display the whole program, if appropriate.
+      Feel free to create the program yourself or use a program that you find in a book or on the
+      Internet.
+        ▸▸ Refer to a specific variable in the program, specific input, and specific output.
+        ▸▸ Provide a quote from a book that refers to the program or to a concept illustrated by the
+      program, and provide a citation for the book’s title. Feel free to use a real quote from a real
+      book or make up a fictional quote from a fictional book.
+        ▸▸ Provide an acronym (real or made up) or a definition that somehow relates to the web
+      page’s discussion.
+        ▸▸ Include a total of at least 10 different types of phrasing elements in your web page. You
+      must use appropriate phrasing elements that fit the flow of your web page. You will lose
+      points if any of your elements are inappropriate (e.g., using wbr in a normal-length word).
+      For future projects, you will use CSS for formatting. But for practice purposes, for this project, use
+      only HTML5 elements and not CSS."
+  </blockquote></pre>
+</body>
+</html>
