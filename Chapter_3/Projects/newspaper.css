@@ -1,0 +1,34 @@
+body {
+  background-color: cyan;
+}
+h1 {
+  font-style: italic;
+  font-family: "Times New Roman", serif;
+  color: blue;
+  text-align: center;
+}
+h4 {text-align: center;}
+hr {color: silver;}
+div {
+  margin: 1.5em 2em ;
+}
+.subs {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.price {
+  font-family: monospace;
+  font-size: large;
+}
+.silver {
+  color: hsl(0,0%,75.3%);
+  background-color: blue;
+}
+.fuch {
+  color: #ff00ff;
+  background-color: blue;
+}
+.orange {
+  color: rgb(255,165,0);
+  background-color: blue;
+}

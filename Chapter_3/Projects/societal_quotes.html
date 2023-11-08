@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<!--
+Your style container must:
+▸▸### Implement an appropriate type selector rule that would 
+apply to all possible heading elements (not just the ones shown).
+▸▸### Implement appropriate class selector rules with bold and 
+strike-through selectors.
+▸▸### Implement an appropriate type.class selector rule for p 
+elements that use a gray-background selector.
+▸▸### Implement a type selector rule for all p elements. The 
+rule should specify:
+• A 5-pixel padding
+• 50-pixel left and right margins
+• A dashed red border
+• Times New Roman or serif font text that is 
+justified with both the left and right sides
+• 10-pixel indentation
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Css Practice</title>
+<style>
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  p {
+    padding: 5px;
+    margin: 15px 50px;
+    border: medium dashed red;
+    font: medium "Times New Roman", serif;
+    text-indent: 10px;
+    text-align: justify;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .strike-through {
+    text-decoration: line-through;
+  }
+  p.gray-background {
+    background-color: lightgrey;
+  }
+  
+</style>
+</head>
+
+<body>
+<h1>css practice</h1>
+<h2>societal quotes</h2>
+<p>
+"Society as a whole benefits immeasurably from a climate in
+which all persons, regardless of race or gender, may have the
+opportunity to earn respect, responsibility, advancement and
+remuneration based on <span class="strike-through">inheritance</span> ability."
+<br><br>
+Justice Sandra Day O'Connor
+</p>
+<p class="gray-background">
+"Shall I not inform you of a better act than fasting, alms, and
+prayers? Making peace between one another: enmity and malice tear
+up heavenly rewards by the roots."
+<br><br>
+Prophet Muhammad
+</p>
+<p>
+"Education is the <span class="bold">most powerful</span>
+weapon which you can use to change the world."
+<br><br>
+President Nelson Mandela
+</p>
+</body>
+</html>
