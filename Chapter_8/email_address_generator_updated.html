@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<!--
+8.19
+This code contains 'onchange' event-handler attribute.
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Email Address Generator</title>
+<script>
+  function generateEmail(daform) {
+    document.getElementById("email").innerHTML =
+      daform.elements["first"].value + "." +
+      daform.elements["last"].value + "@park.edu";
+    daform.reset();
+    daform.elements["first"].focus();
+    daform.elements["last"].disabled = true;
+  }
+</script>
+</head>
+
+<body>
+<h3>
+  Enter your first and last names and then click the button.
+</h3>
+<form>
+  First Name:
+  <input type="text" id="first" size="15" autofocus
+    onchange = "this.form.elements['last'].disabled=false;">
+  <br>
+  Last Name:
+  <input type="text" id="last" size="15" disabled>
+  <br><br>
+  <input type="button" value="Generate Email"
+    onclick="generateEmail(this.form);">
+</form>
+<p id="email"></p>
+</body>
+</html>
