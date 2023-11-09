@@ -1,0 +1,33 @@
+body {
+  background-color: moccasin;
+}
+header {
+  color: white;
+  background-color: midnightblue;
+}
+header > p {
+  margin: 5px 0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+h2 {
+  color: white;
+  background-color: blueviolet;
+}
+aside {
+  font-size: 0.9em;
+  color: black;
+  background-color: white;
+  float: right;
+  padding: 10px;
+  margin: 5px;
+  line-height: 1.5em;
+}
+.date {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+a {color: white; text-decoration: none;}
+a:hover {text-decoration: underline;}
+img {margin: 10px 50px;}
+#linker {margin: 10px;}
