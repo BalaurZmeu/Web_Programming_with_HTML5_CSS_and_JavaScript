@@ -77,17 +77,32 @@ JavaScript in which <code>this</code> appears. For example:<br>
 <code>&lt;input type="button" value="Generate Email" onclick="generateEmail(this.form);"&gt;</code><br>
 In this example, the enclosing object is the button’s element object.</p>
 <h3 id="what-operator-is-in-charge-of-connecting-a-string-to-something-else-to-form-a-larger-string">13. What operator is in charge of connecting a string to something else to form a larger string?</h3>
-<p><strong>My answer:</strong></p>
+<p><strong>My answer:</strong> The concatenation operator, +.<br>
+<code>'Hello' + ', ' + 'world!'</code> results in <code>'Hello, world!'</code></p>
 <h3 id="the-most-common-syntax-for-comments-is-.-when-is-it-appropriate-to-use-the--…-syntax-for-comments">14. The most common syntax for comments is <code>//</code>. When is it appropriate to use the <code>/* … */</code>syntax for comments?</h3>
-<p><strong>My answer:</strong></p>
+<p><strong>My answer:</strong> In JavaScript <code>//</code> is used for short, one-string comments.<br>
+The <code>/* ... */</code> is used for long, descriptive, often multi-line comments.</p>
 <h3 id="what-is-the-scope-of-a-local-variable">15. What is the scope of a local variable?</h3>
-<p><strong>My answer:</strong></p>
+<p><strong>My answer:</strong> By using the keyword <code>var</code>, you can use same-named<br>
+variables in different functions, and the JavaScript engine creates separate<br>
+local variables. A local variable is a variable that can be used only within<br>
+the function in which it is declared.<br>
+<code>var username;</code></p>
 <h3 id="to-implement-a-rollover-with-javascript-what-two-event-handler-attributes-should-you-use">16. To implement a rollover with JavaScript, what two event-handler attributes should you use?</h3>
-<p><strong>My answer:</strong></p>
+<p><strong>My answer:</strong> To implement a rollover with JavaScript, one can use<br>
+the 	<code>onmouseover</code> and <code>onmouseout</code> event-handler attributes.<br>
+<code>&lt;img scr="Work.jpg" onmouseover = "this.src='Rest.jpg';" onmouseout = "this.src='Work.jpg';"&gt;</code></p>
 <h3 id="list-several-security-measures-that-are-built-into-javascript.">17. List several security measures that are built into JavaScript.</h3>
-<p><strong>My answer:</strong></p>
-<h3 id="what-is-the-purpose-of-the-noscript-element">18. What is the purpose of the noscript element?</h3>
-<p><strong>My answer:</strong></p>
+<p><strong>My answer:</strong> JavaScript is designed to have limited capabilities. For<br>
+example, JavaScript is unable to access a user’s computer in terms of the<br>
+computer’s files and what’s in the computer’s memory. Also, JavaScript<br>
+can send requests to web servers only in a constrained (and safe) manner.</p>
+<h3 id="what-is-the-purpose-of-the-noscript-element">18. What is the purpose of the <code>noscript</code> element?</h3>
+<p><strong>My answer:</strong> To display a message on those browsers that have<br>
+JavaScript disabled, use the <code>noscript</code> element. Specifically, add a<br>
+<code>noscript</code> container to the top of your body container, and insert<br>
+explanatory text inside the <code>noscript</code> container. Here’s an example:<br>
+<code>&lt;noscript&gt;&lt;p&gt;This web page uses JavaScript. For proper results, you must use a web browser with JavaScript enabled.&lt;/p&gt;&lt;/noscript&gt;</code></p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
