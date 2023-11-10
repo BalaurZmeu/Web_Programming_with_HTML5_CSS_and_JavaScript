@@ -28,13 +28,13 @@ for exchanging messages between computers.
 **My answer:** Syntax refers to the set of rules and conventions that dictate the structure and organization of a programming language or a formal language, such as a markup language. It defines how statements or elements within the language should be arranged, formatted, and sequenced to be considered valid and understandable by a computer or interpreter. In the context of programming languages, syntax governs the correct use of keywords, punctuation, and operators to create valid code. Deviating from the prescribed syntax can result in errors or the code not functioning as intended.
 
 ### 8. What is the purpose of the `title` element?
-**My answer:** The "title" element in HTML is used to define the title of a web page. It serves several important purposes:
+**My answer:** The `title` element in HTML is used to define the title of a web page. It serves several important purposes:
 
-1.  Browser Tab Text: The text specified within the "title" element appears in the title bar or tab of a web browser when a user visits the web page.
+1.  Browser Tab Text: The text specified within the `title` element appears in the title bar or tab of a web browser when a user visits the web page.
     
-2.  Search Engine Optimization (*SEO*): Search engines use the content of the "title" element to understand the topic or subject matter of a web page.
+2.  Search Engine Optimization (*SEO*): Search engines use the content of the `title` element to understand the topic or subject matter of a web page.
     
-3.  Bookmarking: When users bookmark a web page or add it to their favorites, the text from the "title" element is often used as the default name for the bookmark.
+3.  Bookmarking: When users bookmark a web page or add it to their favorites, the text from the `title` element is often used as the default name for the bookmark.
 
 ### 9. For the `meta` element, what is the purpose of the `name` attribute and the `content` attribute?
 **My answer:** The `name` attribute of the `meta` element, specifies the type or name of the metadata being provided.
