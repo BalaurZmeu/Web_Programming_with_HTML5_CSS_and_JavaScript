@@ -2,7 +2,7 @@
 
 ### 1. Within a `ul` container, what is the only type of child element allowed?
 
-**My answer:** The HTML5 standard does not allow the inner `ul` container to be a child of the outer `ul` container. The only element that’s allowed to be a child of a `ul` element is an `li` element. Thus, to implement a nested list, you need to have an `li` container in between the outer and inner `ul` containers. Here is an example:
+**My answer:** The HTML5 standard says that the only element that’s allowed to be a child of a `ul` element is an `li` element. It is not allowed for the inner `ul` container to be a child of the outer `ul` container. Thus, to implement a nested list, you need to have an `li` container in between the outer and inner `ul` containers. Here is an example:
 ```html
 <ul id="parent-list">
   <li>Morning</li>
