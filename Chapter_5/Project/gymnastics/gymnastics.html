@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+body {
+  position: relative;
+  background-color: lightblue;
+  margin: 20px;
+}
+header {
+  left: 0; top: 0;
+  position: absolute;
+  width: 800px; height: 130px;
+  background-color: darkblue;
+}
+h1 {
+  margin: 5px;
+  text-align: center;
+  font-size: 3em;
+  color: gold;
+  font-style: italic;
+  font-family: "Times New Roman", serif;
+}
+section {
+  position: absolute;
+  top: 150px;
+  width: 350px; height: 220px;
+  text-align: justify;
+  font-size: 1.1em;
+}
+section > h3 {
+  margin: 0;
+  font-size: 1.3em;
+}
+section > ul {
+  margin-top: 5px;
+  list-style-type: circle;
+}
+section.left {left: 25px;}
+section.right {left: 425px;}
+figure {
+  position: absolute;
+  top: 400px; left: 0;
+  margin: 0;
+}
+figcaption {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Gymnastics</h1>
+  <h1>Go for the gold!</h1>
+</header>
+
+<section class="left">
+  <h3>Greatest Female Gymnasts</h3>
+  <ul>
+    <li> Romania:
+      <ol>
+        <li>Nadia Comaneci</li>
+      </ol>
+    </li>
+    <li>Russia:
+      <ol start="2">
+        <li>Olga Korbut</li>
+        <li>Larisa Latynina</li>
+      </ol>
+    </li>
+    <li>United States:
+      <ol start="4">
+        <li>Gabby Douglas</li>
+        <li>Mary Lou Retton</li>
+      </ol>
+    </li>
+  </ul>
+</section>
+
+<section class="right">
+  <h3>Greatest Male Gymnasts</h3>
+  <ul>
+    <li> Russia:
+      <ol>
+        <li>Vitaly Scherbo</li>
+        <li>Alexei Nemov</li>
+        <li>Nikolai Andrianov</li>
+      </ol>
+    </li>
+    <li>Japan:
+      <ol start="4">
+        <li>Sawao Kato</li>
+      </ol>
+    </li>
+  </ul>
+</section>
+
+<figure>
+  <img src="./gym.jpg" alt="A gymnast" width="800">
+  <figcaption>Defying the Law of Gravity</figcaption>
+</figure>
+</body>
+</html>

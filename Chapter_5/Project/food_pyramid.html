@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<meta name="description" content="Chapter 5 Project. Tables.">
+<title>Food Pyramid</title>
+<style>
+  h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 15px;
+  }
+  table, th, td {border: thin solid;}
+  table * {
+    text-align: center;
+    padding: 15px;
+  }
+  thead th {
+    border-style: none;
+    color: white;
+    background-color: red;    
+  }
+  tbody th {text-align: left;}
+  .center {display: flex; justify-content: center;}
+  th > span {
+    font-style: italic;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 0px;
+  }
+</style>
+
+<body>
+<h1>The Food Pyramid</h1>
+<div class="center">
+<table>
+<thead>
+  <tr>
+    <th></th><th colspan="2">Serving Guidelines</th>
+  </tr>
+  <tr>
+    <th>Food Group</th><th>2005-2010</th><th>2011-present</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>Milk Group<br><span>(Milk, Yogurt, Cheese)</span></th>
+    <td>2-3</td>
+    <td>3-4</td>
+  </tr>
+    <th>Meat Group<br><span>(Beef, Poultry, Fish, Beans)</span></th>
+    <td>2-3</td>
+    <td>5-6</td>
+  <tr>
+    <th>Fruits</th>
+    <td>2-4</td>
+    <td>2-4</td>
+  </tr>
+  <tr>
+    <th>Vegetables</th>
+    <td>3-5</td>
+    <td>1-2</td>
+  </tr>
+  <tr>
+    <th>Heavily Salted Snacks</th>
+    <td>1-2</td>
+    <td>3-5</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
