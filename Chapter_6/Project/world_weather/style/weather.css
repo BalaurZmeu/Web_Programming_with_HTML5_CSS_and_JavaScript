@@ -1,0 +1,31 @@
+h1 {color: purple;}
+
+h4 {color: violet;}
+
+h4 > a {
+  text-decoration: none;
+  color: purple;
+}
+
+.table {
+  display: table;
+  border-spacing: 40px;
+}
+
+.row {
+  display: table-row;
+}
+
+div.row > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+span {
+  color: purple;
+  font-weight: bold;
+}
+
+.row a {
+  color: purple;
+}
