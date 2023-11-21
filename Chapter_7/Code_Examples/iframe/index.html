@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<!--
+iframe
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Tech Enthusiast Gallery</title>
+<style>
+  body {
+    font-family: "Times New Roman", serif;
+    background-color: lavender;
+    color: navy;
+  }
+  h1 {
+    font-family: "Times New Roman", serif;
+    font-size: 36px;
+  }
+  .table {
+    display: table;
+    display: flex;
+    align-items: flex-start;
+  }
+  .cell {display: table-cell;}
+  nav > * {
+    display: block;
+    margin: 20px 25px 20px 0;
+  }
+  a > img {
+    width: 160px;
+    height: 106px;
+  }
+  iframe {border: none; overflow: hidden;}
+</style>
+</head>
+
+<body>
+<h1>PCB Tinkering Enthusiast Gallery</h1>
+<h3>
+  Click a thumbnail at the left in order to view it in
+  the frame at the right.
+</h3>
+<div class="table">
+  <nav class="cell">
+    <a href="images/4709366.jpg" target="full-size">
+      <img src="images/4709366tn.jpg" alt="soldering"></a>
+    <a href="images/4709368.jpg" target="full-size">
+      <img src="images/4709368tn.jpg" alt="soldering"></a>
+    <a href="images/4709372.jpg" target="full-size">
+      <img src="images/4709372tn.jpg" alt="soldering"></a>
+  </nav>
+  <iframe class="cell" name="full-size" width="640" height="427"
+    src="images/4709366.jpg"></iframe>
+<div>
+</body>
+</html>
