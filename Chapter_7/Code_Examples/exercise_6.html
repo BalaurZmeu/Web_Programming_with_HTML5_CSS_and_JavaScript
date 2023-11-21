@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="author" content="John Dean">
-<title>Scratch</title>
+<title>Radial Gradient</title>
 <style>
 .gradient-background {
     background-image: repeating-radial-gradient(circle, purple, blue 5%, purple 10% );
@@ -12,17 +12,20 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-#sprite {
-width: 100px;
-height: 100px;
-background-image: url(5bd46fb1738b8c06058f7e9817ec236c.png);
-background-position: 0 0;
+#text {
+    text-align: center;
+    color: white;
+    position: relative;
+    top: 45%;
 }
-#sprite:hover {background-position: -101px 0;}
 </style>
 </head>
 <body class="gradient-background">
-<div id="sprite">
+<div id="text">
+<h1>Radial Gradient Demo</h1>
+<p>
+This page uses a radial gradient for a background image.
+</p>
 </div>
 </body>
 </html>
