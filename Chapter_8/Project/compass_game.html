@@ -6,11 +6,13 @@
 <link rel="icon" href="images/pixilart.png" type="image/x-icon">
 <title>Compass Game</title>
 <style>
-  body {padding: 0 40px;}
-  h1, p {font-family: Helvetica, sans-serif;}
-  .italic {font-style: italic;}
+  body {
+    padding: 0 40px;
+    font-family: Helvetica, sans-serif;
+  }
   h1 {font-size: 2.8em;}
   p {font-size: 1.2em;}
+  .italic {font-style: italic;}
   .letter {
     color: red;
     font-family: Georgia, serif;
@@ -30,6 +32,34 @@
   }
   .diagonal {transform: rotate(-45deg);}
 </style>
+<script>
+  function swapValues(first, second) {
+    var temp;
+    temp = document.getElementById(first).innerHTML;
+    document.getElementById(first).innerHTML =
+      document.getElementById(second).innerHTML;
+    document.getElementById(second).innerHTML = temp;
+  } // end swapValues
+  
+  function activateIds() {
+    let ids = ['tv', 'lv', 'rv', 'bv', 'ud'];
+    for (let id of ids) {
+      document.getElementById(id).disabled=false;
+    }
+  }  // end activate
+  
+  function assignNewValues(form) {
+    let ids = ['tv', 'lv', 'rv', 'bv'];
+    let letters = ['top', 'left', 'right', 'bottom'];
+    for (let i = 0; i < ids.length; i++) {
+      let id = ids[i];
+      let letter = letters[i];
+      document.getElementById(letter).innerHTML =
+        document.getElementById(id).value;
+    }
+    form.reset();
+  } // end assignNewValues
+</script>
 </head>
 
 <body>
@@ -41,19 +71,31 @@
 </p>
 <div class="table">
   <div class="row">
-    <span class="cell"><input type="button" class="arrow diagonal" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+    <span class="cell">
+      <input type="button" class="arrow diagonal"
+        value="&LeftArrowRightArrow;"
+          onclick="swapValues('top','left');">
+    </span>
     <span class="cell letter" id="top">S</span>
     <span class="cell"></span>
   </div>
   <div class="row">
     <span class="cell letter" id="left">E</span>
-    <span class="cell"><input type="button" class="arrow" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+    <span class="cell">
+      <input type="button" class="arrow"
+        value="&LeftArrowRightArrow;"
+          onclick="swapValues('left','right');">
+    </span>
     <span class="cell letter" id="right">W</span>
   </div>
   <div class="row">
     <span class="cell"></span>
     <span class="cell letter" id="bottom">N</span>
-    <span class="cell"><input type="button" class="arrow diagonal" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+    <span class="cell">
+      <input type="button" class="arrow diagonal"
+        value="&LeftArrowRightArrow;"
+          onclick="swapValues('bottom','right');">
+    </span>
   </div>
 
 </div>
@@ -63,13 +105,24 @@
   and then press <span class="italic">Update</span>.
 </p>
 <form>
-<input type="button" value="Restart"><br><br>
-Top: <input type="text" id="top_var" size="1" maxlength="1">
-Left: <input type="text" id="left_var" size="1" maxlength="1">
-Right: <input type="text" id="right_var" size="1" maxlength="1">
-Bottom: <input type="text" id="bottom_var" size="1" maxlength="1">
+<input type="button" value="Restart"
+  onclick = "activateIds();">
 <br><br>
-<input type="button" value="Update">
+Top: 
+<input type="text" id="tv" size="1"
+  maxlength="1" disabled>
+Left: 
+<input type="text" id="lv" size="1"
+  maxlength="1" disabled>
+Right: 
+<input type="text" id="rv" size="1"
+  maxlength="1" disabled>
+Bottom: 
+<input type="text" id="bv" size="1"
+  maxlength="1" disabled>
+<br><br>
+<input type="button" id="ud" value="Update" disabled
+  onclick = "assignNewValues(this.form);">
 </form>
 </body>
 </html>
