@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Balaur Zmeu">
+<link rel="icon" href="images/pixilart.png" type="image/x-icon">
+<title>Compass Game</title>
+<style>
+  body {padding: 0 40px;}
+  h1, p {font-family: Helvetica, sans-serif;}
+  .italic {font-style: italic;}
+  h1 {font-size: 2.8em;}
+  p {font-size: 1.2em;}
+  .letter {
+    color: red;
+    font-family: Georgia, serif;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .arrow {
+    color: blue;
+    font-size: 1.5em;
+  }
+  .table {display: table;}
+  .row {display: table-row;}
+  .cell {
+    display: table-cell;
+    width: 80px;
+    height: 80px;
+  }
+  .diagonal {transform: rotate(-45deg);}
+</style>
+</head>
+
+<body>
+<h1>Compass Game</h1>
+<p>
+  The direction letters on the "compass" are scrambled.
+  Press the buttons with arrows to properly position the
+  direction letters.
+</p>
+<div class="table">
+  <div class="row">
+    <span class="cell"><input type="button" class="arrow diagonal" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+    <span class="cell letter" id="top">S</span>
+    <span class="cell"></span>
+  </div>
+  <div class="row">
+    <span class="cell letter" id="left">E</span>
+    <span class="cell"><input type="button" class="arrow" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+    <span class="cell letter" id="right">W</span>
+  </div>
+  <div class="row">
+    <span class="cell"></span>
+    <span class="cell letter" id="bottom">N</span>
+    <span class="cell"><input type="button" class="arrow diagonal" value="&LeftArrowRightArrow;" onclick="func(this);"></span>
+  </div>
+
+</div>
+<p>
+  To restart the game, press <span class="italic">Restart</span>,
+  enter N, S, E, and W in any order in the boxes below,
+  and then press <span class="italic">Update</span>.
+</p>
+<form>
+<input type="button" value="Restart"><br><br>
+Top: <input type="text" id="top_var" size="1" maxlength="1">
+Left: <input type="text" id="left_var" size="1" maxlength="1">
+Right: <input type="text" id="right_var" size="1" maxlength="1">
+Bottom: <input type="text" id="bottom_var" size="1" maxlength="1">
+<br><br>
+<input type="button" value="Update">
+</form>
+</body>
+</html>
