@@ -39,37 +39,27 @@
     document.getElementById(first).innerHTML =
       document.getElementById(second).innerHTML;
     document.getElementById(second).innerHTML = temp;
-  } // end swapValues
+  }
 
-  function activateIds() {
-    let ids = ['tv', 'lv', 'rv', 'bv', 'ud'];
-    for (let id of ids) {
-      document.getElementById(id).disabled = false;
-    }
+  function scramble() {
+    let letters = ['N', 'S', 'W', 'E'];
+    let places = ['top', 'left', 'right', 'bottom'];
 
-    // Clear direction letters
-    let letters = ['top', 'left', 'right', 'bottom'];
-    for (let letter of letters) {
-      document.getElementById(letter).innerHTML = '';
+    for (let i = 0; i < places.length; i++) {
+      let place = places[i];
+      if (letters.length > 0) {
+        let randomIndex = Math.floor(Math.random() *
+          letters.length);
+        let letter = letters[randomIndex];
+        document.getElementById(place).innerHTML = letter;
+        // Remove the assigned letter from the array
+        letters.splice(randomIndex, 1);
+      } else {
+        // Handle the case when there are no more letters
+        console.log('No more letters available.');
+      }
     }
-  }  // end activateIds
-
-  function assignNewValues() {
-    let ids = ['tv', 'lv', 'rv', 'bv'];
-    let letters = ['top', 'left', 'right', 'bottom'];
-    for (let i = 0; i < ids.length; i++) {
-      let id = ids[i];
-      let letter = letters[i];
-      document.getElementById(letter).innerHTML =
-        document.getElementById(id).value;
-    }
-
-    // Disable text controls and Update button
-    let disableIds = ['tv', 'lv', 'rv', 'bv', 'ud'];
-    for (let id of disableIds) {
-      document.getElementById(id).disabled = true;
-    }
-  } // end assignNewValuew
+  }
 </script>
 </head>
 
@@ -111,29 +101,9 @@
 
 </div>
 <p>
-  To restart the game, press <span class="italic">Restart</span>,
-  enter N, S, E, and W in any order in the boxes below,
-  and then press <span class="italic">Update</span>.
+  To restart the game, press <span class="italic">Scramble</span>.
 </p>
-<form>
-<input type="button" value="Restart"
-  onclick = "activateIds();">
-<br><br>
-Top: 
-<input type="text" id="tv" size="1"
-  maxlength="1" disabled>
-Left: 
-<input type="text" id="lv" size="1"
-  maxlength="1" disabled>
-Right: 
-<input type="text" id="rv" size="1"
-  maxlength="1" disabled>
-Bottom: 
-<input type="text" id="bv" size="1"
-  maxlength="1" disabled>
-<br><br>
-<input type="button" id="ud" value="Update" disabled
-  onclick = "assignNewValues();">
-</form>
+<input type="button" value="Scramble"
+  onclick = "scramble();">
 </body>
 </html>
