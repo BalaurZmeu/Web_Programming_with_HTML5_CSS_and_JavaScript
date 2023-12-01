@@ -8,7 +8,7 @@
   html {display: flex; justify-content: center;}
   body {
     background-color: black;
-    background-image: url(water_balloons.jpg);
+    background-image: url("water_balloons.jpg");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -16,30 +16,34 @@
   .row {display: table-row;}
   .row > * {display: table-cell;}
   .table {border-spacing: 10px;}
-  .row > :first-child {text-align: right;}
+  .row > :first-child {
+    text-align: right;
+    background-color: black;
+  }
   .row > * {font-size: 2em;}
   .top {font-size: 4em; text-align: center;}
   .bottom {text-align: center;}
   .bottom > * {font-size: 2em;}
-  *:not(input) {color: white;}
+  output {background-color: black;}
+  *:not(input) {color: lightgreen;}
 </style>
 <script>
   // This function calculates and displays the total water
   // needed to fill up water balloons.
   function calculateWater(form) {
-    const CUBIC_INCHES_PER_GALLON = 231;
+    const CUBIC_CENTIMETERS_PER_LITER = 1000;
     var qty;      // number of balloons
     var diameter; // balloon diameter (in inches)
-    var gallons;  // total gallons of water needed
+    var liters;  // total gallons of water needed
 
     qty = parseInt(form.elements["qty"].value);
     diameter = parseFloat(form.elements["diameter"].value);
-    gallons = qty *
+    liters = qty *
       (4 / 3 * Math.PI * Math.pow(diameter / 2, 3) /
-        CUBIC_INCHES_PER_GALLON);
+        CUBIC_CENTIMETERS_PER_LITER);
     document.getElementById("total-water").innerHTML =
-      "Gallons of water needed to fill up the balloons = " +
-        gallons.toFixed(1);
+      "Liters of water needed to fill up the balloons = " +
+        liters.toFixed(1);
   } // end calculateWater
 </script>
 </head>
@@ -52,7 +56,7 @@
     <input type="text" id="qty" size="3" maxlength="3">
   </div>
   <div class="row">
-    <label for="diameter">Diameter of each balloon in inches:
+    <label for="diameter">Diameter of each balloon in centimeters:
       </label>
     <input type="text" id="diameter" size="4" maxlength="4">
   </div>
