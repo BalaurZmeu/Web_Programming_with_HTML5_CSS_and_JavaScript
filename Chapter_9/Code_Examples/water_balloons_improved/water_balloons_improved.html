@@ -27,24 +27,57 @@
   .bottom > * {font-size: 2em;}
   output {background-color: black;}
   *:not(input) {color: lightgreen;}
+  input:valid:focus {background-color: lightgreen;}
+  input:invalid:focus {background-color: rgb(255, 220, 220);}
 </style>
 <script>
   // This function calculates and displays the total water
   // needed to fill up water balloons.
+  
   function calculateWater(form) {
     const CUBIC_CENTIMETERS_PER_LITER = 1000;
     var qty;      // number of balloons
     var diameter; // balloon diameter (in inches)
-    var liters;  // total gallons of water needed
+    var liters;   // total gallons of water needed
+    var qtyBox, diameterBox; // text controls
+    var totalWater;          // result message
+    
+    qtyBox = form.elements["qty"];
+    diameterBox = form.elements["diameter"];
+    totalWater = form.elements["total-water"];
+    
+    if (!form.checkValidity()) {
+      totalWater.value = "";
+      if (!qtyBox.checkValidity() && diameterBox.checkValidity()) {
+        alert("Invalid quantity value. Please reenter.");
+      }
+      else if (!diameterBox.checkValidity() &&
+        qtyBox.checkValidity()) {
+          alert("Invalid diameter value. Please reenter.");
+        }
+      else if (!diameterBox.checkValidity() &&
+        !qtyBox.checkValidity()) {
+          alert("Invalid quantity and diameter values.");
+        }
+    } // end if
 
-    qty = parseInt(form.elements["qty"].value);
-    diameter = parseFloat(form.elements["diameter"].value);
-    liters = qty *
-      (4 / 3 * Math.PI * Math.pow(diameter / 2, 3) /
-        CUBIC_CENTIMETERS_PER_LITER);
-    document.getElementById("total-water").innerHTML =
+    else {
+      qty = qtyBox.valueAsNumber;
+      diameter = diameterBox.valueAsNumber;
+    
+      if ((qty == 0) || (diameter == 0)) {
+        totalWater.value = "No water is needed.";
+      }
+      else {
+        liters = qty *
+          (4 / 3 * Math.PI * Math.pow(diameter / 2, 3) /
+            CUBIC_CENTIMETERS_PER_LITER);
+    totalWater.value =
       "Liters of water needed to fill up the balloons = " +
         liters.toFixed(1);
+      }
+    } // end else
+    
   } // end calculateWater
 </script>
 </head>
