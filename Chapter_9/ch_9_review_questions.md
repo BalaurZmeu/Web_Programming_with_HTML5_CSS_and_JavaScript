@@ -34,7 +34,7 @@
 
 ### 9. What escape sequence should you use to display a double quote within an `alert` dialog message?
 
-**My answer:** You should use the escape sequence \".
+**My answer:** You should use the escape sequence \\".
 
 ### 10. What is \n?
 
