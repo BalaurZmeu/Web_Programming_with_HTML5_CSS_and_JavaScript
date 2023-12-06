@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Balaur Zmeu">
+<title>Quadratic Equation Roots Calculator</title>
+<style>
+  body {background-color: silver;}
+  span {font-style: italic;}
+  input:invalid:focus {border: 2px solid red;}
+</style>
+<script>
+  // This function calculates and displays the roots
+  // of a quadratic equation
+  
+  function calculateRoots(form) {
+    const CUBIC_CENTIMETERS_PER_LITER = 1000;
+    var a;      // number of balloons
+    var b; // balloon diameter (in inches)
+    var c;   // total gallons of water needed
+    var qtyBox, diameterBox; // text controls
+    var totalWater;          // result message
+    
+    a = form.elements["a"];
+    b = form.elements["b"];
+    c = form.elements["c"];
+    totalWater = form.elements["total-water"];
+    
+    if (!form.checkValidity()) {
+      totalWater.value = "";
+      if (!qtyBox.checkValidity() && diameterBox.checkValidity()) {
+        alert("Invalid quantity value. Please reenter.");
+      }
+      else if (!diameterBox.checkValidity() &&
+        qtyBox.checkValidity()) {
+          alert("Invalid diameter value. Please reenter.");
+        }
+      else if (!diameterBox.checkValidity() &&
+        !qtyBox.checkValidity()) {
+          alert("Invalid quantity and diameter values.");
+        }
+    } // end if
+
+    else {
+      qty = qtyBox.valueAsNumber;
+      diameter = diameterBox.valueAsNumber;
+    
+      if ((qty == 0) || (diameter == 0)) {
+        totalWater.value = "No water is needed.";
+      }
+      else {
+        liters = qty *
+          (4 / 3 * Math.PI * Math.pow(diameter / 2, 3) /
+            CUBIC_CENTIMETERS_PER_LITER);
+    totalWater.value =
+      "Liters of water needed to fill up the balloons = " +
+        liters.toFixed(1);
+      }
+    } // end else
+    
+  } // end calculateWater
+</script>
+</head>
+
+<body>
+<h1>Quadratic Equation Roots Calculator</h1>
+<p>
+  This web page finds the roots of a polynomial equation of the
+  following form:<br>
+  <span>ax</span><sup>2</sup> + <span>bx</span> +
+    <span>c</span> = 0<br><br>
+  <span>a</span>, <span>b</span>, and <span>c</span> must be
+    integers between -99 and +99.
+</p>
+<form id="roots">
+    <label for="a">a:</label>
+    <input type="number" id="a"
+      min="-99" max="+99" size="5" maxlength="5">&nbsp; &nbsp;
+    <label for="b">b:</label>
+    <input type="number" id="b"
+      min="-99" max="+99" size="5" maxlength="5">&nbsp; &nbsp;
+    <label for="c">c:</label>
+    <input type="number" id="c"
+      min="-99" max="+99" size="5" maxlength="5">&nbsp; &nbsp;
+</form>
+<br>
+  <input type="button" form="roots" value="Calculate roots"
+    onclick="calculateWater(this.form);">
+  <br><br>
+  <output id="result" form="roots"></output>
+</body>
+</html>
