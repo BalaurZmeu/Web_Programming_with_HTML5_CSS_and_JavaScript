@@ -14,21 +14,19 @@
   // of a quadratic equation
   
   function calculateRoots(form) {
-    const CUBIC_CENTIMETERS_PER_LITER = 1000;
-    var a;      // number of balloons
-    var b; // balloon diameter (in inches)
-    var c;   // total gallons of water needed
-    var qtyBox, diameterBox; // text controls
-    var totalWater;          // result message
+    var a; // text controls
+    var b; // text controls
+    var c; // text controls
+    var result; // result message
     
-    a = form.elements["a"];
-    b = form.elements["b"];
-    c = form.elements["c"];
-    totalWater = form.elements["total-water"];
+    a = form.elements["a"].valueAsNumber;
+    b = form.elements["b"].valueAsNumber;
+    c = form.elements["c"].valueAsNumber;
+    result = form.elements["result"];
     
     if (!form.checkValidity()) {
       totalWater.value = "";
-      if (!qtyBox.checkValidity() && diameterBox.checkValidity()) {
+      if (!a.checkValidity() && diameterBox.checkValidity()) {
         alert("Invalid quantity value. Please reenter.");
       }
       else if (!diameterBox.checkValidity() &&
@@ -42,19 +40,17 @@
     } // end if
 
     else {
-      qty = qtyBox.valueAsNumber;
-      diameter = diameterBox.valueAsNumber;
-    
-      if ((qty == 0) || (diameter == 0)) {
-        totalWater.value = "No water is needed.";
+      a = a.valueAsNumber;
+      b = b.valueAsNumber;
+      c = c.valueAsNumber;
+      if (b ** 2 < 4 * a * c) {
+        result.value = "x’s roots are imaginary";
+      }
+      else if (b ** 2 == 4 * a * c) {
+        result.value = "x = "
       }
       else {
-        liters = qty *
-          (4 / 3 * Math.PI * Math.pow(diameter / 2, 3) /
-            CUBIC_CENTIMETERS_PER_LITER);
-    totalWater.value =
-      "Liters of water needed to fill up the balloons = " +
-        liters.toFixed(1);
+        result.value = "x<sub>1</sub> = , x<sub>2</sub> = "
       }
     } // end else
     
