@@ -14,43 +14,52 @@
   // of a quadratic equation
   
   function calculateRoots(form) {
-    var a; // text controls
-    var b; // text controls
-    var c; // text controls
-    var result; // result message
+    var a;
+    var b;
+    var c;
+    var x;
+    var result;
+    var err_message;
     
-    a = form.elements["a"].valueAsNumber;
-    b = form.elements["b"].valueAsNumber;
-    c = form.elements["c"].valueAsNumber;
+    a = form.elements["a"];
+    b = form.elements["b"];
+    c = form.elements["c"];
+    err_message = "";
     result = form.elements["result"];
     
-    if (!form.checkValidity()) {
-      totalWater.value = "";
-      if (!a.checkValidity() && diameterBox.checkValidity()) {
-        alert("Invalid quantity value. Please reenter.");
+    if (!form.checkValidity() || a.value == 0) {
+      err_message = "Error:\n";
+      if (!a.checkValidity() || a.value == 0) {
+        err_message += "Invalid entry for a. \
+Must be a non-zero integer between -99 and +99.\n";
       }
-      else if (!diameterBox.checkValidity() &&
-        qtyBox.checkValidity()) {
-          alert("Invalid diameter value. Please reenter.");
+      if (!b.checkValidity()) {
+          err_message += "Invalid entry for b. \
+Must be an integer between -99 and +99.\n";
         }
-      else if (!diameterBox.checkValidity() &&
-        !qtyBox.checkValidity()) {
-          alert("Invalid quantity and diameter values.");
+      if (!c.checkValidity()) {
+          err_message += "Invalid entry for c. \
+Must be an integer between -99 and +99.\n";
         }
+        alert(err_message);
     } // end if
 
     else {
       a = a.valueAsNumber;
       b = b.valueAsNumber;
       c = c.valueAsNumber;
+      result.value = "Solution: ";
+      x1 = (-b + Math.sqrt(b ** 2 - 4 * a * c)) / (2 * a);
+      x2 = (-b - Math.sqrt(b ** 2 - 4 * a * c)) / (2 * a);
       if (b ** 2 < 4 * a * c) {
-        result.value = "x’s roots are imaginary";
+        result.value += "x’s roots are imaginary";
       }
       else if (b ** 2 == 4 * a * c) {
-        result.value = "x = "
+        result.value += "x = " + x1.toFixed(3);
       }
       else {
-        result.value = "x<sub>1</sub> = , x<sub>2</sub> = "
+        result.value += "x = " + x1.toFixed(3) +
+          ", x = " + x2.toFixed(3);
       }
     } // end else
     
@@ -81,7 +90,7 @@
 </form>
 <br>
   <input type="button" form="roots" value="Calculate roots"
-    onclick="calculateWater(this.form);">
+    onclick="calculateRoots(this.form);">
   <br><br>
   <output id="result" form="roots"></output>
 </body>
