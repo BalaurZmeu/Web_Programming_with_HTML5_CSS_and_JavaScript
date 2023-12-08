@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="author" content="John Dean">
-<title>Quadratic Equation Roots Calculator</title>
+<title>Compound Interest</title>
 <style>
   .table {
     display: table;
     border-spacing: 0 3px;
   }
-  .row {display: row;}
+  .row {display: table-row;}
   .row > * {display: table-cell;}
   .row > :first-child {
     text-align: right;
@@ -32,19 +32,19 @@
 <form class="table" id="input">
   <div class="row">
     <label for="deposit">Initial deposit:</label>
-    <input type="number" id="deposit" min="1" max="9999"
-      step="1" required>
+    <input type="number" id="deposit"
+      size="7" min="1" max="9999" step="1" required>
   </div>
   <div class="row">
     <label for="rate">Annual interest rate:</label>
-    <input type="number" id="rate" min="0" max="100"
-      step=".1" required>
+    <input type="number" id="rate"
+      size="7" min="0" max="100" step=".1" required>
     <span>&nbsp;%</span>
   </div>
   <div class="row">
     <label for="years">Years to grow:</label>
-    <input type="number" id="years" min="1" max="20"
-      step="1" required>
+    <input type="number" id="years"
+      size="7" min="1" max="20" step="1" required>
   </div>
 </form>
 <br>
