@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Park Dorm Blog</title>
+<style>
+  body {background: azure;}
+  .table {display: table;}
+  .row {display: table-row;}
+  .row > * {
+    display: table-cell;
+    vertical-align: top;
+    padding: 10px 20px 0 0;
+  }
+  #error {
+    display: none;
+    color: red;
+    margin-bottom: 20px;
+  }
+</style>
+<script src="dorm_blog_2.js"></script>
+</head>
+
+<body>
+<h2>Park University Residence Hall Blog Board</h2>
+<form>
+  <textarea id="allComments" rows="10" cols="80"
+    readonly></textarea>
+  <br>
+  <div class="table">
+    <div class="row">
+      <label for="dorm">Select a dorm:</label>
+      <label for="newComment">Your comment:</label>
+    </div>
+    <div class="row">
+      <div>
+        <select id="dorm" multiple size="6" required>
+          <option>Chesnut Hall</option>
+          <option>Copley Quad</option>
+          <option>Browning Hall</option>
+          <option>Eaton Hall</option>
+          <option>Melrose Hall</option>
+          <option>Semple Hall</option>
+        </select>
+      </div>
+      <div>
+        <textarea id="newComment" rows="4" cols="50"
+          required spellcheck="true"></textarea>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div id="error">
+    You must select a dorm and enter a comment.
+  </div>
+  <input type="button" value="Add"
+    onclick="addComment(this.form);">
+</form>
+</body>
+</html>
