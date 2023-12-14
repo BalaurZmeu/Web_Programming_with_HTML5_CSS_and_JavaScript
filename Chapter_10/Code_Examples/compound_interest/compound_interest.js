@@ -2,7 +2,7 @@
 * compound_interest.js
 * author: John Dean
 *
-*This file contains a function that supports the
+* This file contains a function that supports the
 * compound_interest.html web page.
 **************************************************/
 

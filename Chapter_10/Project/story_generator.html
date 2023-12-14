@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Balaur Zmeu">
+  <title>Story Generator</title>
+  <style>
+  body {
+    padding-left: 20px;
+    width: 600px;
+  }
+  .table {display: table;}
+  .row {display: table-row;}
+  .row > * {
+    display: table-cell;
+    margin: 3px;
+  }
+  .row > :first-child {
+    text-align: right;
+    padding-right: 10px;
+  }
+  .btn {
+    font: 1.1rem Tahoma, sans-serif;
+  }
+  #result {
+    display: none;
+    font: 1.3rem "Times New Roman", serif;
+    color: blue;
+  }
+  #result > span {
+    color: red;
+  }
+  </style>
+  <script src="story_generator.js"></script>
+</head>
+<body>
+<section id="input-page">
+  <h1>Story Generator</h1>
+  <p>
+    Enter appropriate values in all of the text boxes.
+    Then click the <span class="btn">Done</span>
+    button to generate a story with your entered
+    values plugged into it.
+  </p>
+  <form class="table" id="input-form">
+    <div class="row">
+      <label>noun:</label>
+      <input type="text">
+    </div>
+    <div class="row">
+      <label>past tense verb:</label>
+      <input type="text">
+    </div>
+    <div class="row">
+      <label>adjective:</label>
+      <input type="text">
+    </div>
+    <div class="row">
+      <label>past tense verb:</label>
+      <input type="text">
+    </div>
+    <div class="row">
+      <label>adjective:</label>
+      <input type="text">
+    </div>
+  </form>
+  <br><br>
+  <input type="button" class="btn" id="done" value="Done"
+    form="input-form" onclick="generateText(this.form);">
+  <input type="button" class="btn" id="reset" value="Reset"
+    form="input-form" onclick="reset(this.form);">
+</section>
+<section id="result-page">
+  It was a dark and stormy night. A shot rang out! A
+  <span>&lt;missing text&gt;</span> slammed. The maid
+  <span>&lt;missing text&gt;</span>. Suddenly, a
+  <span>&lt;missing text&gt;</span> ship appeared on
+  the horizon! While millions of people
+  <span>&lt;missing text&gt;</span>, the king lived in
+  luxury. Meanwhile, on a <span>&lt;missing text&gt;</span>
+  farm in Kansas, a boy was growing up.
+  <br><br>
+  The End
+  <br><br><br>
+  <input type="button" class="btn" id="return" value="Return"
+    onclick="goBack();">
+</section>
+</body>
+</html>
