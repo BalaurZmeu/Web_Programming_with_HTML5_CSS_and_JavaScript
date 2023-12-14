@@ -20,8 +20,15 @@ function generateText(form) {
   inputPage = document.getElementById("input-page");
   
   for (let i=0; i<5; i++) {
-    resultPage.children[i].innerHTML =
-      inputForm.children[i].children[1].value;    
+    if (inputForm.children[i].children[1].value != "") {
+      resultPage.children[i].innerHTML =
+        inputForm.children[i].children[1].value;
+      resultPage.children[i].style.color = "blue";
+    }
+    else {
+      resultPage.children[i].innerHTML = "&lt;missing text&gt;";
+      resultPage.children[i].style.color = "red";
+    }
   }
   
   resultPage.style.display = "block";
