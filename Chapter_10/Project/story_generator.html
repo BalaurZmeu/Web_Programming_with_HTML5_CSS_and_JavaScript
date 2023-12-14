@@ -22,12 +22,12 @@
   .btn {
     font: 1.1rem Tahoma, sans-serif;
   }
-  #result {
+  #result-page {
     display: none;
     font: 1.3rem "Times New Roman", serif;
     color: blue;
   }
-  #result > span {
+  #result-page > span {
     color: red;
   }
   </style>
@@ -68,7 +68,7 @@
   <input type="button" class="btn" id="done" value="Done"
     form="input-form" onclick="generateText(this.form);">
   <input type="button" class="btn" id="reset" value="Reset"
-    form="input-form" onclick="reset(this.form);">
+    form="input-form" onclick="resetForm();">
 </section>
 <section id="result-page">
   It was a dark and stormy night. A shot rang out! A
