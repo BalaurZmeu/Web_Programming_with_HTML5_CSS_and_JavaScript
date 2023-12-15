@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Factorial Generator</title>
+<script>
+  // This function generates a factorial.
+  function generateFactorial(form) {
+    var num;   // a user-entered number
+    var factorial; // factorial of num
+    var count;  // multiplicand for factorial calculation
+    
+    num = form.elements["number"].valueAsNumber;
+    factorial = 1;
+
+    for (let count=2; count<=num; count++) {
+      factorial *= count;
+    }
+
+    form.elements["result"].value = num + "! = " + factorial;
+  } // end generateFactorial
+</script>
+</head>
+
+<body>
+<form>
+  <label for="number">Enter a whole number:</label>
+  <input type="number" id="number"
+    min="0" max="15" step="1" required>
+  <br><br>
+  <input type="button" value="Generate Factorial"
+    onclick="generateFactorial(this.form);">
+  <br><br>
+  <output id="result"></output>
+</form>
+</body>
+</html>

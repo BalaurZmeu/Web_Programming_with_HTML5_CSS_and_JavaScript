@@ -19,21 +19,21 @@
   // bottom of the web page.
   
   function applyFontSelections(form) {
-    var fontFeatureCBs;   // collection of checkboxes
-    var message;          // message element
-    var selectors = "";   // a list of selectors for message
-    
+    var fontFeatureCBs; // collection of checkboxes
+    var message;        // message element
+    var selectors = "";     // a list of selectors for message
+
     message = document.getElementById("message");
     message.style.fontSize =
       form.elements["fontSize"].value;
-
     fontFeatureCBs = form.elements["otherFontFeatures"];
+
     for (let fontFeature of fontFeatureCBs) {
       if (fontFeature.checked) {
         selectors += fontFeature.value + " ";
       }
     } // end for
-    
+
     message.className = selectors;
   } // end applyFontSelections
 </script>
