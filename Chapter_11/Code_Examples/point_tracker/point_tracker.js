@@ -11,7 +11,7 @@ class Point {
   constructor (x, y) {
     this.x = x;
     this.y = y;
-    if (Point.count == undefined || Point.count == 2) {
+    if (Point.count == undefined) {
       Point.count = 1;
     }
     else if (Point.count == 1) {
@@ -56,3 +56,49 @@ class Point {
     return distance;
   } // end distance
 } // end class Point
+
+//*****************************************************************
+
+var point1, point2;  // the most recently clicked points
+
+// This function stores a user's click location as a point.
+
+function captureClick(e) {
+  if (Point.getCount() == 0) {
+    point1 = new Point(e.clientX, e.clientY);
+    document.getElementById("pt1").innerHTML = point1.value();
+  }
+  else if (Point.getCount() == 1) {
+    point2 = new Point(e.clientX, e.clientY);
+    document.getElementById("pt2").innerHTML = point2.value();
+  }
+  else {
+    point1 = point2;
+    point2 = new Point(e.clientX, e.clientY);
+    document.getElementById("pt1").innerHTML = point1.value();
+    document.getElementById("pt2").innerHTML = point2.value();
+  }
+} // end captureClick
+
+//*****************************************************************
+
+// This function calculates and returns the distance
+// between 2 points.
+
+function displayDistance(e) {
+  var distance;
+  var message;
+  
+  e.stopPropagation();
+  distance = Point.distance(point1, point2);
+  if (distance == null) {
+    message = "To calculate a distance, you must first create " +
+    "two points!";
+  }
+  else {
+    message = "The two points are " + distance.toFixed(1) +
+      " pixels apart.";
+  }
+  
+  document.getElementById("message").innerHTML = message;
+} // end displayDistance
