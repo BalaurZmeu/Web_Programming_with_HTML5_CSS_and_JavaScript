@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="author" content="John Dean">
+  <meta name="description" content="Properties Web Page">
   <title>Downtown Properties</title>
+  <link rel="stylesheet" href="../../common/style/electro.css">
+  <script src="property.js"></script>
+  <script>
+    var form;
+    var table;
+    var property = ""; // one real-estate property
+    
+    // This 2D array provides data for table
+    
+    var properties = [
+      // street number, street name, frontage, height, roof type
+      [750, "New Hampshire", 100, 120, "mansard"],
+      [811, "Massachusetts", 100, 120, "mansard"],
+      [830, "New Hampshire", 100, 120, "mansard"],
+      [735, "New Hampshire", 25, 32, "flat"],
+      [733, "Massachusetts", 25, 32, "flat"],
+      [815, "New Hampshire", 100, 120, "mansard"],
+      [705, "New Hampshire", 100, 120, "mansard"],
+      [843, "Massachusetts", 25, 32, "flat"],
+      [725, "Massachusetts", 25, 32, "flat"],
+      [821, "New Hampshire", 25, 32, "flat"],
+      [701, "Massachusetts", 100, 120, "mansard"],
+      [730, "Massachusetts", 100, 120, "mansard"],
+      [835, "Massachusetts", 100, 120, "mansard"],
+      [820, "Massachusetts", 25, 32, "flat"],
+    ];
+    
+    function initialize() {
+      form = document.getElementByTagName("form")[0];
+      table = document.getElementById("descriptions");
+      fillTable();
+    } // end initialize
+  </script>
 </head>
 
-<body onload="createHeaderFooter(), initialize()">
+<body onload="initialize()">
 <h2>Property Description</h2>
 <form>
   <div>
@@ -25,5 +61,26 @@
       onclick="property.deleteProperty()">
   </div>
 </form>
+<h3 style="text-align: center;">Instructions:</h3>
+<p>
+  To add a new property, enter values in input boxes and click
+  the "Add" button.
+</p>
+<p>
+  To select an existing property and display its data in input
+  boxes, in the table below, click anywhere on the row which
+  describes that property. To alter a particular property's
+  data, select it, change displayed value(s) in input boxes, and
+  click the "Replace" button. To delete a property, select it
+  and click the "Delete" button.
+</p>
+<p>
+  The "Cancel" button clears all input-box entries and de-selects
+  any corresponding property.
+</p>
+<table id="descriptions">
+  <tr><th>Number</th><th>Street</th><th>Width</th>
+    <th>Height</th><th>Roof</th></tr>
+</table>
 </body>
 </html>
