@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Downtown Properties</title>
+</head>
+
+<body onload="createHeaderFooter(), initialize()">
+<h2>Property Description</h2>
+<form>
+  <div>
+    Address Number: <input type="text" size="5">
+    Street Name: <input type="text" size="15"><br>
+  </div>
+  <div>
+    Frontage (ft): <input type="text" size="5">
+    Height (ft): <input type="text" size="5">
+    Roof Type: <input type="text" size="15"><br>
+  </div><br>
+  <div>
+    <input type="button" value="Cancel" onclick="cancel()"><br><br>
+    <input type="button" value="Add" onclick="add()">
+    <input type="button" value="Replace" 
+      onclick="property.replace()">
+    <input type="button" value="Delete"
+      onclick="property.deleteProperty()">
+  </div>
+</form>
+</body>
+</html>
