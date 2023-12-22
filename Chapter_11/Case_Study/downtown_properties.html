@@ -33,19 +33,95 @@
     ];
     
     function initialize() {
-      form = document.getElementByTagName("form")[0];
+      form = document.getElementsByTagName("form")[0];
       table = document.getElementById("descriptions");
       fillTable();
     } // end initialize
+    
+    // Sort properties array and re-populate table
+    
+    function fillTable() {
+      var rows; // collection of rows in the table
+      
+      rows = table.getElementsByTagName("tr");
+      streetSort();
+      for (let j=rows.length-1; j>0; j--) {
+        table.deleteRow(j);
+      }
+      for (let i=0; i<properties.length; i++) {
+        var row; // a new row for the table
+        
+        row = table.insertRow(rows.length);
+        row.setAttribute("onclick", "new Property(this)");
+        for (let j=0; j<properties[0].length; j++) {
+          row.insertCell(j).innerHTML = properties[i][j];
+        }
+      }
+    } // end fillTable
+    
+    function streetSort() {
+      for (let i=0; i<properties.length; i++) {
+        properties[i] = reverseAddress(properties[i]);
+      }
+      properties.sort();
+      for (let i=0; i<properties.length; i++) {
+        properties[i] = reverseAddress(properties[i]);
+      }
+    } // end streetSort
+    
+    function reverseAddress(oneProperty) {
+      var temp = oneProperty[0];
+      
+      oneProperty[0] = oneProperty[1];
+      oneProperty[1] = temp;
+      return oneProperty;
+    } // end reverseAddress
+    
+    // Add another property and redisplay resorted table
+    
+    function add() {
+      properties.push(new Array(5));
+      for (let i=0; i<5; i++) {
+        properties[properties.length-1][i] =
+          form.elements[i].value;
+      }
+      fillTable();
+      cancel();
+    } // end add
+    
+    // Clear input boxes and discard property object
+    
+    function cancel() {
+      for (let i=0; i<5; i++) {
+        form.elements[i].value = "";
+      }
+      property = "";
+    } // end cancel
   </script>
+  <style>
+    body {text-align: center;}
+    form {margin: 20px 0;}
+    form input {margin-right: 20px;}
+    .ft {margin-bottom: 20px;}
+    table {
+      width: 400px;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    table td:last-child {text-align: left;}
+    table td {background-color: hsl(120,80%,90%);}
+    table th, td {padding: 4px;}
+    table th {background-color: lightgreen;}
+  </style>
 </head>
 
 <body onload="initialize()">
 <h2>Property Description</h2>
 <form>
   <div>
-    Address Number: <input type="text" size="5">
-    Street Name: <input type="text" size="15"><br>
+    Address Number: <input type="text" class="ft" size="5">
+    Street Name: <input type="text" class="ft" size="15"><br>
   </div>
   <div>
     Frontage (ft): <input type="text" size="5">
@@ -61,7 +137,7 @@
       onclick="property.deleteProperty()">
   </div>
 </form>
-<h3 style="text-align: center;">Instructions:</h3>
+<h3>Instructions:</h3>
 <p>
   To add a new property, enter values in input boxes and click
   the "Add" button.
