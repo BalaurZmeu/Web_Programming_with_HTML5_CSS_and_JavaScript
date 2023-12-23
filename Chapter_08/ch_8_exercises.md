@@ -1,12 +1,11 @@
 ﻿# Chapter 8 Exercises
 
-**1. Why is it appropriate to terminate every statement with a semicolon, even the last one in a function? Provide two reasons.**
+### 1. Why is it appropriate to terminate every statement with a semicolon, even the last one in a function? Provide two reasons.
 
-**My answer:** Coding conventions dictate that you should terminate every statement with a semicolon, even the last one. If there’s no semicolon at the end of the last statement and someone later adds a new statement after the last statement, there will be no semicolon between the two statements, and that creates a bug. Another reason to insert a semicolon after the last statement is that if you don’t do it, the JavaScript engine does it for you behind the scenes, and that slows things down slightly.
+Coding conventions dictate that you should terminate every statement with a semicolon, even the last one. If there’s no semicolon at the end of the last statement and someone later adds a new statement after the last statement, there will be no semicolon between the two statements, and that creates a bug. Another reason to insert a semicolon after the last statement is that if you don’t do it, the JavaScript engine does it for you behind the scenes, and that slows things down slightly.
 
-**2. For each of the following variable names, indicate (with Y or N) whether it’s legal and whether it uses proper style. Note: You may skip the style question for illegal variable names because style is irrelevant in that case.**
+### 2. For each of the following variable names, indicate (with Y or N) whether it’s legal and whether it uses proper style. Note: You may skip the style question for illegal variable names because style is irrelevant in that case.
 
-**My answer:**
 <table>
 <tr>
 <th></th><th></th><th>legal (Y/N)?</th><th>proper style (Y/N)?</th>
@@ -31,18 +30,18 @@
 </tr>
 </table>
 
-**3. Find a website, or just imagine a website, where users are able to make reservations at restaurants. Should such a website be implemented with client-side technology or server-side technology? Provide at least two reasons that justify your answer.**
+### 3. Find a website, or just imagine a website, where users are able to make reservations at restaurants. Should such a website be implemented with client-side technology or server-side technology? Provide at least two reasons that justify your answer.
 
-**My answer:** I believe that a website, where users make reservations at restaurants, should be implemented with server-side technology and the data of the reservations should be stored on the server. Firstly, because the restaurant staff should be able to access the data and see, who made reservations. Secondly, the data of the available free tables should be accessible for visitors of the website.
+I believe that a website, where users make reservations at restaurants, should be implemented with server-side technology and the data of the reservations should be stored on the server. Firstly, because the restaurant staff should be able to access the data and see, who made reservations. Secondly, the data of the available free tables should be accessible for visitors of the website.
 
-**4. Implement a button that, when clicked, reassigns the form’s controls to their original values. The button should be labeled “Start over.” Your solution should not use an event handler. Just show the input element, nothing else.**
+### 4. Implement a button that, when clicked, reassigns the form’s controls to their original values. The button should be labeled “Start over.” Your solution should not use an event handler. Just show the input element, nothing else.
 
-**My answer:**
 ```html
 <input type="reset" value="Start over">
 ```
 
-**5. The following code is syntactically correct and would work if combined with the usual HTML structural elements, but it has many style mistakes, a few output display mistakes, and a maintainability mistake. Provide an improved function definition with none of those mistakes.**
+### 5. The following code is syntactically correct and would work if combined with the usual HTML structural elements, but it has many style mistakes, a few output display mistakes, and a maintainability mistake. Provide an improved function definition with none of those mistakes.
+
 ```html
 <script>
 function displaymessage (name,month,day,year){
@@ -59,7 +58,6 @@ onclick =
 </body>
 ```
 
-**My answer:**
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -80,11 +78,10 @@ onclick =
   <p id="msg"></p>
 </body>
 </html>
-
 ```
 
-**6. Why is it good to use `var` for same-named variables that are in different functions?**
+### 6. Why is it good to use `var` for same-named variables that are in different functions?
 
-**My answer:** Firstly, using `var` helps programmers to identify the variables in a function quickly, and that makes the function easier to understand and maintain. Secondly, if `var` is not used for a variable, then the JavaScript engine creates a global variable. Such scenario can be dangerous in that if you coincidentally use same-named variables in different functions, changing the variable’s value in one function affects the variable in the other function. By using `var`, you can use same-named variables in different functions, and the JavaScript engine creates separate local variables.
+Firstly, using `var` helps programmers to identify the variables in a function quickly, and that makes the function easier to understand and maintain. Secondly, if `var` is not used for a variable, then the JavaScript engine creates a global variable. Such scenario can be dangerous in that if you coincidentally use same-named variables in different functions, changing the variable’s value in one function affects the variable in the other function. By using `var`, you can use same-named variables in different functions, and the JavaScript engine creates separate local variables.
 
 > Written with [StackEdit](https://stackedit.io/).

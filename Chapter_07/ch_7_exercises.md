@@ -1,8 +1,7 @@
 ﻿# Chapter 7 Exercises
 
-**1. Provide an `img` element and an associated CSS rule (two separate things) that could be used to render the following sun image. Do not use a style attribute. Your code should cause surrounding text to flow down on the right of the sun image. You’re welcome to create an entire web page for testing purposes, but the only thing you’re required to submit is the image tag and the CSS rule. If you want to create an entire web page, you’ll need to find an actual sun-image file. Otherwise, feel free to dream up a sun-image filename and appropriate size values. You should assume that the image file is stored in the same directory as the web page.**
+### 1. Provide an `img` element and an associated CSS rule (two separate things) that could be used to render the following sun image. Do not use a style attribute. Your code should cause surrounding text to flow down on the right of the sun image. You’re welcome to create an entire web page for testing purposes, but the only thing you’re required to submit is the image tag and the CSS rule. If you want to create an entire web page, you’ll need to find an actual sun-image file. Otherwise, feel free to dream up a sun-image filename and appropriate size values. You should assume that the image file is stored in the same directory as the web page.
 
-**My answer:**
 ```html
 <style>
   .sun {float: left;}
@@ -14,24 +13,23 @@
     Welcome to sunny San Diego...
 ```
 
-**2. Suppose you have an `a` element and an `iframe` element, and you want the `a` element’s `href` value to load within the `iframe` element. How can you make that happen? In your answer, you must mention the attributes in the `a` and `iframe` elements that are used to tie the two elements together.**
+### 2. Suppose you have an `a` element and an `iframe` element, and you want the `a` element’s `href` value to load within the `iframe` element. How can you make that happen? In your answer, you must mention the attributes in the `a` and `iframe` elements that are used to tie the two elements together.
 
-**My answer:** The `target` attribute of the `<a>` element should coincide with the `name` attribute of the `<iframe>` element.
+The `target` attribute of the `<a>` element should coincide with the `name` attribute of the `<iframe>` element.
+
 ```html
 <a href="big_image.jpg" target="full-size-iframe"><img src="thumbnail.jpg"></a>
 <iframe name="full-size-iframe"> ...
 ```
 
-**3. Given an `img` element with `class="block-image"`. Provide a CSS rule that causes the image to display using block formatting.**
+### 3. Given an `img` element with `class="block-image"`. Provide a CSS rule that causes the image to display using block formatting.
 
-**My answer:**
 ```css
 .block-image {display: block;}
 ```
 
-**4. Implement a CSS image sprite that toggles between a stationary cartoon animal (a kangaroo?) and that same animal jumping. The toggling occurs when the mouse moves over the image and when the mouse moves away.**
+### 4. Implement a CSS image sprite that toggles between a stationary cartoon animal (a kangaroo?) and that same animal jumping. The toggling occurs when the mouse moves over the image and when the mouse moves away.
 
-**My answer:**
 ```html
 <style>
 #sprite {
@@ -49,13 +47,14 @@ background-position: 0 0;
 </body>
 ```
 
-**5. Given this body element start tag:**
+### 5. Given this body element start tag:
+
 ```html
 <body class="honey-bunny">
 ```
-**Provide a class selector rule that uses scaling to cover the web page completely with an image file named `goldenLagomorph.jpg`. Your code should position the background image with its top-left corner in the top-left corner of the browser window’s viewport. Assume the web page and the image file are stored in the same directory.**
 
-**My answer:**
+#### Provide a class selector rule that uses scaling to cover the web page completely with an image file named `goldenLagomorph.jpg`. Your code should position the background image with its top-left corner in the top-left corner of the browser window’s viewport. Assume the web page and the image file are stored in the same directory.
+
 ```css
 body.honey-bunny {
   background-image: url(goldenLagomorph.jpg);
@@ -63,16 +62,14 @@ body.honey-bunny {
   background-position: top left;
   background-attachment: fixed;
   }
-
 ```
 
-**6. Provide a `background-image` property-value pair that could be used
-to generate this radial gradient background:**
+### 6. Provide a `background-image` property-value pair that could be used to generate this radial gradient background:
 
-**My answer:**
 ```css
 background-image: repeating-radial-gradient(circle, purple, blue 5%, purple 10% );
 ```
-Here's the [link to the actual page](Code_Examples/exercise_6.html)
+
+Here's the [link to this exercise's HTML file](Code_Examples/exercise_6.html)
 
 > Written with [StackEdit](https://stackedit.io/).
