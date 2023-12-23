@@ -1,15 +1,14 @@
 ﻿# Chapter 5 Exercises
 
-**1. Suppose you have a table implemented with a `table` element, and borders are displayed around each table cell and around the table’s perimeter. Provide a CSS type selector rule that eliminates the gaps between each of the adjacent borders.**
+### 1. Suppose you have a table implemented with a `table` element, and borders are displayed around each table cell and around the table’s perimeter. Provide a CSS type selector rule that eliminates the gaps between each of the adjacent borders.
 
-**My answer:** 
 ```css
 table, th, td {border-collapse: collapse;}
 ```
 
-**2. There are quite a few syntax details in HTML5 and in CSS. This book covers a lot of those details, but certainly not all of them. One thing we skipped in this chapter is the `colgroup` element, which is used in conjunction with the `table` element. For this exercise, you’ll need to learn about the `colgroup` element by looking it up on the W3C’s website.**
+### 2. There are quite a few syntax details in HTML5 and in CSS. This book covers a lot of those details, but certainly not all of them. One thing we skipped in this chapter is the `colgroup` element, which is used in conjunction with the `table` element. For this exercise, you’ll need to learn about the `colgroup` element by looking it up on the W3C’s website.
 
-**Given this code:**
+#### Given this code:
 ```html
 <style>
 table {border-collapse: collapse;}
@@ -45,9 +44,10 @@ th {background: lightskyblue;}
 </table>
 </body>
 ```
-**What `colgroup` element code and CSS code need to be added to this code in order to produce the following web page? As its name implies, the purpose of the `colgroup` element is to group together a set of columns. In this case, you must provide three `colgroup` elements—one for the first column, one for the second and third columns combined, and one for the fourth column. In your answer, you must make it clear where your added code should be inserted in the code.**
+#### What `colgroup` element code and CSS code need to be added to this code in order to produce the following web page? As its name implies, the purpose of the `colgroup` element is to group together a set of columns. In this case, you must provide three `colgroup` elements—one for the first column, one for the second and third columns combined, and one for the fourth column. In your answer, you must make it clear where your added code should be inserted in the code.
 
-**My answer:** The `<colgroup>` tag is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row. The `<colgroup>` tag must be a child of a `<table>` element, after any `<caption>` elements and before any `<thead>`, `<tbody>`, `<tfoot>`, and `<tr>` elements. To define different properties to a column within a `<colgroup>`, one should use the `<col>` tag within the `<colgroup>` tag.
+The `<colgroup>` tag is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row. The `<colgroup>` tag must be a child of a `<table>` element, after any `<caption>` elements and before any `<thead>`, `<tbody>`, `<tfoot>`, and `<tr>` elements. To define different properties to a column within a `<colgroup>`, one should use the `<col>` tag within the `<colgroup>` tag.
+
 ```html
 <style>
 ...
@@ -73,23 +73,24 @@ border-collapse: collapse;
 ...
 ```
 
-**3. What is the purpose of a pseudo-class?**
+### 3. What is the purpose of a pseudo-class?
 
-**My answer:** According to the Mozilla CSS reference a CSS ***pseudo-class*** is a keyword added to a selector that specifies a special state of the selected element(s). For example, the pseudo-class `:hover` can be used to select a button when a user's pointer hovers over the button and this selected button can then be styled.
+According to the Mozilla CSS reference a CSS ***pseudo-class*** is a keyword added to a selector that specifies a special state of the selected element(s). For example, the pseudo-class `:hover` can be used to select a button when a user's pointer hovers over the button and this selected button can then be styled.
+
 ```css
 button:hover {color: blue;}
 ```
 
-**4. Describe the effect of this CSS rule:**
+### 4. Describe the effect of this CSS rule:
+
 ```css
 tr:nth-of-type(odd) {color: red;}
 ```
 
-**My answer:** The CSS rule above selects every odd table row in a table and changes the color of the text in all elements in a row to red.
+The CSS rule above selects every odd table row in a table and changes the color of the text in all elements in a row to red.
 
-**5. Refer to the Global Temperatures source code in Figure 5.8. Provide a modified table that uses two `tbody` elements - one for the two most recent years (2015 and 2016) and one for the earlier years. Assign `"recentYears"` to the `class` attribute of the `tbody` containing the two most recent years. Provide a CSS rule for the recent-years data cells that changes the text from black to red. Hint: Use a class selector in conjunction with a descendant selector.**
+### 5. Refer to the Global Temperatures source code in Figure 5.8. Provide a modified table that uses two `tbody` elements - one for the two most recent years (2015 and 2016) and one for the earlier years. Assign `"recentYears"` to the `class` attribute of the `tbody` containing the two most recent years. Provide a CSS rule for the recent-years data cells that changes the text from black to red. Hint: Use a class selector in conjunction with a descendant selector.
 
-**My answer:**
 ```html
 <style>
 ...
@@ -119,9 +120,8 @@ tr:nth-of-type(odd) {color: red;}
 </html>
 ```
 
-**6. Refer to the My Favorite Eras source code in Figure 5.10. Provide a modified table that is more accessible. Specifically, add an `id` attribute value to the `th` element at the head of each column and each row. Also, add a `headers` attribute to the Mesozoic and Cenozoic `th` elements and to every `td` element.**
+### 6. Refer to the My Favorite Eras source code in Figure 5.10. Provide a modified table that is more accessible. Specifically, add an `id` attribute value to the `th` element at the head of each column and each row. Also, add a `headers` attribute to the Mesozoic and Cenozoic `th` elements and to every `td` element.
 
-**My answer:**
 ```html
 <table>
 <caption>My Favorite Eras</caption>
@@ -157,7 +157,8 @@ tr:nth-of-type(odd) {color: red;}
 </table>
 ```
 
-**7. A table is embedded inside one cell of a larger structure formed using `display: table`, `display: table-row`, and `display: table-cell`. The embedded table is the middle cell in the three bordered cells. This exercise also provides practice using structural pseudo-class selectors. The selectors apply gold background to the days on the calendar during which NCAA basketball tournament games are played. Your display will look like the screenshot, except for the calendar dates. Use the current year, which means March dates will probably fall on different days of the week. Also, the cell on the right should contain material related to your favorite team. Provide complete source code for the March Madness web page. The following template provides most of the code, so use it as a starting point. In the left section, you’ll need to add “MARCH MADNESS.” In the middle section, you’ll need to provide content for the calendar by adding March, Sun, Mon, …, 1, 2, etc. In the right section, you’ll need to replace “Jayhawks” and the fight song with text for your favorite team. In the structural pseudo-class CSS rule, you’ll need to provide appropriate values in the selectors’ parentheses. Figuring out those values is a bit tricky. Here’s a hint: To do something to a particular row and all subsequent rows or a particular cell within a row and all subsequent cells, use the formula, 1n+#, where # is the starting row number or starting cell number.**
+### 7. A table is embedded inside one cell of a larger structure formed using `display: table`, `display: table-row`, and `display: table-cell`. The embedded table is the middle cell in the three bordered cells. This exercise also provides practice using structural pseudo-class selectors. The selectors apply gold background to the days on the calendar during which NCAA basketball tournament games are played. Your display will look like the screenshot, except for the calendar dates. Use the current year, which means March dates will probably fall on different days of the week. Also, the cell on the right should contain material related to your favorite team. Provide complete source code for the March Madness web page. The following template provides most of the code, so use it as a starting point. In the left section, you’ll need to add “MARCH MADNESS.” In the middle section, you’ll need to provide content for the calendar by adding March, Sun, Mon, …, 1, 2, etc. In the right section, you’ll need to replace “Jayhawks” and the fight song with text for your favorite team. In the structural pseudo-class CSS rule, you’ll need to provide appropriate values in the selectors’ parentheses. Figuring out those values is a bit tricky. Here’s a hint: To do something to a particular row and all subsequent rows or a particular cell within a row and all subsequent cells, use the formula, 1n+#, where # is the starting row number or starting cell number.
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -228,7 +229,6 @@ background-color: gold;
 </html>
 ```
 
-**My answer:**
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -297,13 +297,14 @@ Hail to old KU
 ```
 Here's a link: [March Madness](Code_Examples/march_madness.html)
 
-**8. Given this `img` element:**
+### 8. Given this `img` element:
+
 ```html
 <img class="cow-picture" src="cowInPond.jpg" alt="cow in pond" width="200" height="145">
 ```
-**Provide a CSS rule that uses absolute positioning to position the image in the top-right corner of the image’s surrounding container, 10 pixels from the top edge and 10 pixels from the right edge.**
 
-**My answer:**
+### Provide a CSS rule that uses absolute positioning to position the image in the top-right corner of the image’s surrounding container, 10 pixels from the top edge and 10 pixels from the right edge.
+
 ```css
 img.cow-picture {
   position: absolute;
@@ -311,4 +312,5 @@ img.cow-picture {
   right: 10px;
 }
 ```
+
 > Written with [StackEdit](https://stackedit.io/).
