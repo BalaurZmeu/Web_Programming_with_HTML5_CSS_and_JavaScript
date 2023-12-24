@@ -16,7 +16,7 @@ class NumberList {
   // This method returns the mean
   
   calcMean() {
-  
+    return "test-mean";
   } // end calcMean
   
   //***************************************************************
@@ -24,7 +24,7 @@ class NumberList {
   // This method returns the variance
   
   calcVar() {
-  
+    return "test-var";
   } // end calcVar
   
   //***************************************************************
@@ -32,7 +32,7 @@ class NumberList {
   // This method returns the standard deviation
   
   calcDev() {
-  
+    return "test-dev";
   } // end calcDev
   
 } // end class NumberList
