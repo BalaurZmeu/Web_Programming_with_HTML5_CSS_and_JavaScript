@@ -8,32 +8,44 @@
 
 class NumberList {
   constructor (numbers) {
-    this.numbers = numbers.value.split(" ");
+    const numberStrings = numbers.value.split(/\s+/);
+    this.numbers = numberStrings.map(str => parseInt(str, 10));
   } // end constructor
   
   //***************************************************************
   
   // This method returns the mean
   
-  calcMean() {
-    return "test-mean";
-  } // end calcMean
+  calculateMean() {
+    const sum = this.numbers.reduce((accumulator, currentValue) =>
+      accumulator + currentValue, 0);
+    const mean = sum / this.numbers.length;
+    return mean.toFixed(3);
+  } // end calculateMean
   
   //***************************************************************
   
   // This method returns the variance
   
-  calcVar() {
-    return "test-var";
-  } // end calcVar
+  calculateVariance() {
+    const mean = this.calculateMean();
+    const squaredDifferences = this.numbers.map(number =>
+      Math.pow(number - mean, 2));
+    const sumSquaredDiff = squaredDifferences.
+      reduce((acc, val) => acc + val, 0);
+    const variance = sumSquaredDiff / this.numbers.length;
+    return variance.toFixed(3);
+  } // end calculateVariance
   
   //***************************************************************
   
   // This method returns the standard deviation
   
-  calcDev() {
-    return "test-dev";
-  } // end calcDev
+  calculateStandardDeviation() {
+    const variance = this.calculateVariance();
+    const standardDeviation = Math.sqrt(variance);
+    return standardDeviation.toFixed(3);
+  } // end calculateStandardDeviation
   
 } // end class NumberList
 
@@ -69,15 +81,15 @@ function check(prompt) {
     switch (prompt) {
       case "mean":
         document.getElementById("mean").
-          innerHTML = numbers.calcMean();
+          innerHTML = numbers.calculateMean();
         break;
       case "var":
         document.getElementById("var").
-          innerHTML = numbers.calcVar();
+          innerHTML = numbers.calculateVariance();
         break;
       case "dev":
         document.getElementById("dev").
-          innerHTML = numbers.calcDev();
+          innerHTML = numbers.calculateStandardDeviation();
     } // end switch
   } // end else
 } // end check
