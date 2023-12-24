@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Balaur Zmeu">
+  <meta name="description" content="Statistics Web Page">
+  <title>Statistics Calculator</title>
+  <style>
+    .table {display: table;}
+    .row {display: table-row;}
+    .row > * {display: table-cell;}
+    #error {display: none;}
+  </style>
+  <script src="statistics.js"></script>
+</head>
+
+<body>
+<h1>Statistics Calculator</h1>
+<h3>Enter a list of numbers separated by spaces.</h3>
+<label for="number-control">Number list:</label>&nbsp;
+<input type="text" id="number-control" size="40">
+<div class="table">
+  <div class="row">
+    <input type="button" value="Mean">
+    <input type="button" value="Variance">
+    <input type="button" value="Standard Deviation">
+  </div>
+  <div class="row">
+  </div>
+</div>
+<div id="error">
+  Enter at least two numbers.<br>
+  Separate numbers with spaces.<br>
+  Example: "12 345 6.7 -89"
+</div>
+</body>
+</html>
