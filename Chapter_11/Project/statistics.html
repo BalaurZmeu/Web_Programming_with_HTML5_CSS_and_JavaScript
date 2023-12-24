@@ -6,9 +6,16 @@
   <meta name="description" content="Statistics Web Page">
   <title>Statistics Calculator</title>
   <style>
-    .table {display: table;}
+    .table {
+      display: table;
+      margin: 20px 0;
+    }
     .row {display: table-row;}
-    .row > * {display: table-cell;}
+    .row > * {
+      display: table-cell;
+      margin-right: 20px;
+      text-align: left;
+    }
     #error {display: none;}
   </style>
   <script src="statistics.js"></script>
@@ -18,14 +25,20 @@
 <h1>Statistics Calculator</h1>
 <h3>Enter a list of numbers separated by spaces.</h3>
 <label for="number-control">Number list:</label>&nbsp;
-<input type="text" id="number-control" size="40">
+<input type="text" id="number-control" size="40" required>
 <div class="table">
   <div class="row">
-    <input type="button" value="Mean">
-    <input type="button" value="Variance">
-    <input type="button" value="Standard Deviation">
+    <input type="button" value="Mean"
+      onclick="check('mean');">
+    <input type="button" value="Variance"
+      onclick="check('var');">
+    <input type="button" value="Standard Deviation"
+      onclick="check('dev');">
   </div>
   <div class="row">
+    <span id="mean">asdf</span>
+    <span id="var">asdf</span>
+    <span id="dev">asdf</span>
   </div>
 </div>
 <div id="error">
