@@ -48,53 +48,178 @@ class Human {
 
 ```html
 <!DOCTYPE html>
-<html lang="en"
-  onclick="captureClick(event);">
+<html lang="en" onclick="captureClick(event);">
 <head>
-<meta charset="utf-8">
-<meta name="author" content="John Dean">
-<title>Colored Point Tracker</title>
-<style>
-  body {
-    padding-left: 40px;
-    width: 600px;
-  }
-</style>
-<script>
-  class Point {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-    } // end constructor
-  } // end Point constructor
-  
-  function value() {
-    return "(" + this.x + ", " + this.y + ")";
-  } // end value
-  
-  function captureClick(e) {
-    var point; // the most recently clicked point
+  <meta charset="utf-8">
+  <meta name="author" content="Balaur Zmeu">
+  <title>Colored Point Tracker</title>
+  <style>
+    body {
+      padding-left: 40px;
+      width: 600px;
+    }
+    .pointCSS {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
+  <script>
+    class Point {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+      } // end constructor
     
-    point = new Point(e.clientX, e.clientY);
-    document.getElementById("pt").innerHTML = point.value();
-  } // end captureClick
-</script>
+      value() {
+        return "(" + this.x + ", " + this.y + ")";
+      } // end value
+    } // end Point class
+    
+    let colorCycle = ["red", "green", "blue"];
+    let currentColorIndex = 0;
+
+    function captureClick(e) {
+      var point; // the most recently clicked point
+
+      point = new Point(e.clientX, e.clientY,
+        colorCycle[currentColorIndex]);
+      currentColorIndex = (currentColorIndex + 1) %
+        colorCycle.length;
+
+      const pointDiv = document.getElementById("pointOnScreen");
+      pointDiv.style.backgroundColor = point.color;
+      pointDiv.style.left = point.x + "px";
+      pointDiv.style.top = point.y + "px";
+
+      document.getElementById("pointCoordinates").innerHTML =
+        point.value();
+    } // end captureClick
+  </script>
 </head>
 
 <body>
-<h1>Colored Point Tracker</h1>
-<p>
-  Click your mouse anywhere on this web page to capture its
-  location. Click again to capture a new value.
-</p>
-Point location: <span id="pt"></span>
+  <h1>Colored Point Tracker</h1>
+  <div id="pointOnScreen" class="pointCSS"></div>
+  <p>
+    Click your mouse anywhere on this web page to capture its
+    location. Click again to capture a new value.
+  </p>
+  Point location: <span id="pointCoordinates"></span>
 </body>
 </html>
 ```
 
+[link to this exercise's HTML file](Code_Examples/exercise_3_colored_point_tracker.html)
+
 ### 4.Improve the previous exercise’s web page by enabling the user to drag the points. While dragging a point, update the point’s coordinates label. Clicking on the point should not activate the click listener (in other words, it should not create a new point).
 
+```html
+<!DOCTYPE html>
+<html lang="en" onclick="captureClick(event);">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Balaur Zmeu">
+  <title>Dragging Point Tracker</title>
+  <style>
+    body {
+      padding-left: 40px;
+      width: 600px;
+    }
+    .pointCSS {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      position: absolute;
+      cursor: grab; /* Add a grab cursor */
+    }
+  </style>
+</head>
 
+<body>
+  <h1>Dragging Point Tracker</h1>
+  <div id="pointOnScreen" class="pointCSS"
+    onmousedown="startDrag(event)"></div>
+  <p>
+    Click your mouse anywhere on this web page to capture its
+    location. Click again to capture a new value. You can drag
+    the point with the mouse.
+  </p>
+  Point location: <span id="pointCoordinates"></span>
+
+  <script>
+    class Point {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+      } // end constructor
+    
+      value() {
+        return "(" + this.x + ", " + this.y + ")";
+      } // end value
+    } // end Point class
+    
+    let colorCycle = ["red", "green", "blue"];
+    let currentColorIndex = 0;
+    let isDragging = false; // Flag (if dragging is in progress)
+    let coordinates = document.getElementById("pointCoordinates");
+    
+    function captureClick(e) {
+      if (!isDragging) {
+        var point; // the most recently clicked point
+
+        point = new Point(e.clientX, e.clientY,
+          colorCycle[currentColorIndex]);
+        currentColorIndex = (currentColorIndex + 1) %
+          colorCycle.length;
+
+        const pointDiv = document.getElementById("pointOnScreen");
+        pointDiv.style.backgroundColor = point.color;
+        pointDiv.style.left = point.x + "px";
+        pointDiv.style.top = point.y + "px";
+
+        coordinates.innerHTML = point.value();
+      }
+    } // end captureClick
+
+    function startDrag(e) {
+      isDragging = true;
+      const pointDiv = document.getElementById("pointOnScreen");
+
+      // Calculate the offset between the mouse click and
+      // the point's position
+      const offsetX = e.clientX -
+        pointDiv.getBoundingClientRect().left;
+      const offsetY = e.clientY -
+        pointDiv.getBoundingClientRect().top;
+
+      function dragMove(e) {
+        // Update the point's position during dragging
+        pointDiv.style.left = e.clientX - offsetX + "px";
+        pointDiv.style.top = e.clientY - offsetY + "px";
+        coordinates.innerHTML = new Point(e.clientX, e.clientY, "").value();
+      }
+
+      function dragEnd() {
+        isDragging = false;
+        // Remove event listeners when dragging ends
+        document.removeEventListener("mousemove", dragMove);
+        document.removeEventListener("mouseup", dragEnd);
+      }
+
+      // Attach event listeners for dragging
+      document.addEventListener("mousemove", dragMove);
+      document.addEventListener("mouseup", dragEnd);
+    }
+  </script>
+</body>
+</html>
+```
+
+[link to this exercise's HTML file](Code_Examples/exercise_4_dragging_point_tracker.html)
 
 ### 5. Suppose you have an `iAgree` variable that holds a checkbox control object. Provide an `addEventListener` method call that adds an `onchange` event handler to the checkbox. The event handler should call a function named `agree`.
 
