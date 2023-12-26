@@ -24,7 +24,6 @@ class Person {
 
 #### b) Assume that the `avgAge` property gets assigned a value only after a `Human` object gets instantiated. Provide an `if` statement for the `Human` constructor that takes care of the `avgAge` property for the first instantiated `Human` object. Specifically, check for `avgAge` not having a value and if that’s the case, assign the `age` parameter’s value to the `avgAge` property.
 
-
 a) It is appropriate to have `avgAge` as a class property because it allows for a single shared value across all instances of the class, avoiding unnecessary duplication of the property in each object.
 
 b)
@@ -47,7 +46,51 @@ class Human {
 
 ### 3. Improve the Point Tracker web page presented earlier by displaying a colored point whenever the user clicks the mouse. Use absolute positioning to display each point at the position at which it’s clicked. So if the user clicks at position `x = 220` and `y = 331`, then you should display a point at that location on the browser window. To implement a point, display a space character with a circular border and a colored background. Add a color property to the `Point` class. Each new point should use a different background color than its predecessor. Cycle from red, to green, to blue, and then start over with red.
 
+```html
+<!DOCTYPE html>
+<html lang="en"
+  onclick="captureClick(event);">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Colored Point Tracker</title>
+<style>
+  body {
+    padding-left: 40px;
+    width: 600px;
+  }
+</style>
+<script>
+  class Point {
+    constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    } // end constructor
+  } // end Point constructor
+  
+  function value() {
+    return "(" + this.x + ", " + this.y + ")";
+  } // end value
+  
+  function captureClick(e) {
+    var point; // the most recently clicked point
+    
+    point = new Point(e.clientX, e.clientY);
+    document.getElementById("pt").innerHTML = point.value();
+  } // end captureClick
+</script>
+</head>
 
+<body>
+<h1>Colored Point Tracker</h1>
+<p>
+  Click your mouse anywhere on this web page to capture its
+  location. Click again to capture a new value.
+</p>
+Point location: <span id="pt"></span>
+</body>
+</html>
+```
 
 ### 4.Improve the previous exercise’s web page by enabling the user to drag the points. While dragging a point, update the point’s coordinates label. Clicking on the point should not activate the click listener (in other words, it should not create a new point).
 
@@ -134,8 +177,6 @@ for (let suit of suits) {
     deck.push(card + " of " + suit);
   }
 }
-
-console.log("deck = " + deck);
 ```
 
 ### 9. The following code implements a simple web page that creates a list of cheerleader names and sorts the names. Provide an improved version of the web page that stores each cheerleader’s height in centimeters and sorts the cheerleaders by height. Among other things, you’ll need to implement a Cheerleader class with name and height properties.

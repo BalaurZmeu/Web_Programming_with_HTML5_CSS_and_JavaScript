@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" onclick="captureClick(event);">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="John Dean">
+  <title>Colored Point Tracker</title>
+  <style>
+    body {
+      padding-left: 40px;
+      width: 600px;
+    }
+    
+    .point {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin: 5px;
+    }
+  </style>
+  <script>
+    class Point {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+      } // end constructor
+    } // end Point constructor
+
+    function value() {
+      return "(" + this.x + ", " + this.y + ")";
+    } // end value
+
+    let colorCycle = ["red", "green", "blue"];
+    let currentColorIndex = 0;
+
+    function captureClick(e) {
+      var point; // the most recently clicked point
+
+      point = new Point(e.clientX, e.clientY, colorCycle[currentColorIndex]);
+      currentColorIndex = (currentColorIndex + 1) % colorCycle.length;
+
+      const pointDiv = document.createElement("div");
+      pointDiv.className = "point";
+      pointDiv.style.backgroundColor = point.color;
+      document.body.appendChild(pointDiv);
+
+      document.getElementById("pt").innerHTML = point.value();
+    } // end captureClick
+  </script>
+</head>
+
+<body>
+  <h1>Colored Point Tracker</h1>
+  <p>
+    Click your mouse anywhere on this web page to capture its
+    location. Click again to capture a new value.
+  </p>
+  Point location: <span id="pt"></span>
+</body>
+</html>
+
