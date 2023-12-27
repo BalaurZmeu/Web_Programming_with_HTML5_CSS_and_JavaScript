@@ -81,20 +81,21 @@
         // Update the point's position during dragging
         pointDiv.style.left = e.clientX - offsetX + "px";
         pointDiv.style.top = e.clientY - offsetY + "px";
-        coordinates.innerHTML = new Point(e.clientX, e.clientY, "").value();
-      }
+        coordinates.innerHTML = new Point(e.clientX,
+          e.clientY, "").value();
+      } // end dragMove
 
       function dragEnd() {
         isDragging = false;
         // Remove event listeners when dragging ends
         document.removeEventListener("mousemove", dragMove);
         document.removeEventListener("mouseup", dragEnd);
-      }
+      } // end dragEnd
 
       // Attach event listeners for dragging
       document.addEventListener("mousemove", dragMove);
       document.addEventListener("mouseup", dragEnd);
-    }
+    } // end startDrag
   </script>
 </body>
 </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Improved Stunt Group</title>
+<style>
+td:first-child {text-align: right;}
+#btn {margin-left: 50px;}
+</style>
+<script>
+  class Cheerleader {
+    constructor(name, height) {
+      this.name = name;
+      this.height = height;
+    } // end constructor
+    
+    listEntry() {
+      return "<tr>" + "<td>" + this.name + "</td>" +
+        "<td>" + this.height + "</td>" + "</tr>";
+    }
+  } // end class Cheerleader
+
+  var stuntGroup = new Array();
+  
+  function addCheerleader() {
+    var cheerleaderObject;
+    var inputName;
+    var inputHeight;
+    
+    inputName = document.getElementById("cheerleader").value;
+    inputHeight = parseInt(
+      document.getElementById("heightData").value);
+    cheerleaderObject = new Cheerleader(inputName, inputHeight);
+    stuntGroup.push(cheerleaderObject);
+    stuntGroup.sort(
+      function (a, b) {
+        return (a.height >
+          b.height) ? -1 : (a.height < b.height) ? 1 : 0;
+      }
+    );
+    displayStuntGroup();
+  } // end addCheerleader
+  
+  function displayStuntGroup() {
+    var listContent = "";
+    for (let i=0; i<stuntGroup.length; i++) {
+      listContent += stuntGroup[i].listEntry();
+    }
+    document.getElementById("list").innerHTML = listContent;
+  } // end displayStuntGroup
+</script>
+</head>
+<body>
+  <h3>Add cheerleaders to the stunt group</h3>
+  <table>
+    <tr>
+      <td><label for="cheerleader">Name:</label></td>
+      <td><input type="text" id="cheerleader"></td>
+    </tr>
+    <tr>
+      <td><label>Height:</label></td>
+      <td><input type="text" id="heightData"
+        size="7"> centimeters</td>
+    </tr>
+  </table>
+  <br>
+  <input type="button" id="btn" value="Add cheerleader"
+    onclick="addCheerleader();">
+  <br><br>
+  <table id="list"></table>
+</body>
+</html>

@@ -349,43 +349,77 @@ for (let suit of suits) {
 <head>
 <meta charset="utf-8">
 <meta name="author" content="John Dean">
-<title>Stunt Group</title>
+<title>Improved Stunt Group</title>
+<style>
+td:first-child {text-align: right;}
+#btn {margin-left: 50px;}
+</style>
 <script>
   class Cheerleader {
     constructor(name, height) {
       this.name = name;
       this.height = height;
     } // end constructor
+    
+    listEntry() {
+      return "<tr>" + "<td>" + this.name + "</td>" +
+        "<td>" + this.height + "</td>" + "</tr>";
+    }
   } // end class Cheerleader
 
   var stuntGroup = new Array();
   
   function addCheerleader() {
-    stuntGroup.push(document.getElementById("cheerleader").value);
-    stuntGroup.sort();
+    var cheerleaderObject;
+    var inputName;
+    var inputHeight;
+    
+    inputName = document.getElementById("cheerleader").value;
+    inputHeight = parseInt(
+      document.getElementById("heightData").value);
+    cheerleaderObject = new Cheerleader(inputName, inputHeight);
+    stuntGroup.push(cheerleaderObject);
+    stuntGroup.sort(
+      function (a, b) {
+        return (a.height >
+          b.height) ? -1 : (a.height < b.height) ? 1 : 0;
+      }
+    );
+    displayStuntGroup();
   } // end addCheerleader
   
   function displayStuntGroup() {
-    var namesColumn = "";
+    var listContent = "";
     for (let i=0; i<stuntGroup.length; i++) {
-      namesColumn += stuntGroup[i] + "<br>";
+      listContent += stuntGroup[i].listEntry();
     }
-    document.getElementById("stunt-group").innerHTML = namesColumn;
+    document.getElementById("list").innerHTML = listContent;
   } // end displayStuntGroup
 </script>
 </head>
 <body>
-  <input type="text" id="cheerleader">
+  <h3>Add cheerleaders to the stunt group</h3>
+  <table>
+    <tr>
+      <td><label for="cheerleader">Name:</label></td>
+      <td><input type="text" id="cheerleader"></td>
+    </tr>
+    <tr>
+      <td><label>Height:</label></td>
+      <td><input type="text" id="heightData"
+        size="7"> centimeters</td>
+    </tr>
+  </table>
   <br>
-  <input type="button" value="Add cheerleader"
+  <input type="button" id="btn" value="Add cheerleader"
     onclick="addCheerleader();">
   <br><br>
-  <input type="button" value="Display stunt group"
-    onclick="displayStuntGroup();">
-  <div id="stunt-group"></div>
+  <table id="list"></table>
 </body>
 </html>
 ```
+
+[link to this exercise's HTML file](Code_Examples/exercise_9_cheerleaders_list.html)
 
 ### 10. Describe what happens to the `bookMtgList` array if the following code executes. In your answer, you must mention the 0 return value.
 
@@ -393,10 +427,93 @@ for (let suit of suits) {
 bookMtgList.sort(function (a, b) {return 0;});
 ```
 
-
+If the provided sorting function always returns 0, it means that the sort order of elements will remain unchanged. Therefore, executing the code above will leave the `bookMtgList` array in the same order as it was before sorting. No changes will be made to the array's arrangement.
 
 ### 11. Improve the Book Club web page presented earlier by adding a delete button for each book meeting. When the user clicks a book meeting’s delete button, the book meeting should be removed from the `bookMtgList` array, and it should disappear from the displayed schedule.
 
+To achieve the behavior described above, few modifications were made:
+1. Added the function `deleteMtg(index)`
+2. Modified the `bookMtgEntry(index)` method of the `BookMeeting` class, which now adds a button
+3. Modified the function `displayList()`
 
+```javascript
+/*******************************************************************
+* book_club.js
+* John Dean
+*
+* This file implements a BookMeeting class, a list of
+* BookMeeting objects, and a function which adds
+* BookMeeting objects to the list.
+*******************************************************************/
+
+class BookMeeting {
+  constructor (author, title, date) {
+    this.author = author; // book author
+    this.title = title;   // book title
+    this.date = date;     // date of meeting to discuss book
+  } // end constructor
+  
+  //****************************************************************/
+  
+  // Return book meeting information as a table row
+  
+  bookMtgEntry(index) {
+    return "<div class='row' id='meeting" + index + "'>" +
+      "<span>" + this.date.toDateString() + ":</span>" +
+      "<span>" + this.author + ", <cite>" + this.title +
+      "</cite></span><input type='button' value='delete'" +
+      "onclick='deleteMtg(" + index + ")'></div>";
+  } // end bookMtgEntry
+} // end class BookMeeting
+
+//******************************************************************/
+
+var bookMtgList = new Array();
+
+// Add a book club meeting to the list.
+
+function addMtg(form) {
+  var author;  // book author
+  var title;   // book title
+  var date;    // book club meeting date
+  
+  if (!form.checkValidity()) {
+    document.getElementById("error").style.display = "block";
+  }
+  else {
+    document.getElementById("error").style.display = "none";
+    document.getElementById("mtgHeader").style.display = "block";
+    author = form.elements["author"].value;
+    title = form.elements["title"].value;
+    date = new Date(form.elements["date"].value);
+    
+    bookMtgList.push(new BookMeeting(author, title, date));
+    bookMtgList.sort(
+      function (a, b) {
+        return (a.date < b.date) ? -1 : (a.date > b.date) ? 1 : 0;
+      }
+    ); // end sort
+    displayList();
+  } // end else
+} // end addMtg
+
+//******************************************************************/
+
+// Display the list of book club meetings.
+
+function displayList() {
+  var listContent = ""; // The contents of the list of book meetings
+  
+  for (let i=0; i<bookMtgList.length; i++) {
+    listContent += bookMtgList[i].bookMtgEntry(i);
+  }
+  document.getElementById("list").innerHTML = listContent;
+} // end displayList
+
+function deleteMtg(index) {
+  bookMtgList.splice(index, 1);
+  displayList();
+} // end deleteMtg
+```
 
 > Written with [StackEdit](https://stackedit.io/).

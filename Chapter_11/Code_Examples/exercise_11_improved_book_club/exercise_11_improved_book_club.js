@@ -1,0 +1,77 @@
+/*******************************************************************
+* book_club.js
+* John Dean
+*
+* This file implements a BookMeeting class, a list of
+* BookMeeting objects, and a function which adds
+* BookMeeting objects to the list.
+*******************************************************************/
+
+class BookMeeting {
+  constructor (author, title, date) {
+    this.author = author; // book author
+    this.title = title;   // book title
+    this.date = date;     // date of meeting to discuss book
+  } // end constructor
+  
+  //****************************************************************
+  
+  // Return book meeting information as a table row
+  
+  bookMtgEntry(index) {
+    return "<div class='row' id='meeting" + index + "'>" +
+      "<span>" + this.date.toDateString() + ":</span>" +
+      "<span>" + this.author + ", <cite>" + this.title +
+      "</cite></span><input type='button' value='delete'" +
+      "onclick='deleteMtg(" + index + ")'></div>";
+  } // end bookMtgEntry
+} // end class BookMeeting
+
+//******************************************************************
+
+var bookMtgList = new Array();
+
+// Add a book club meeting to the list.
+
+function addMtg(form) {
+  var author;  // book author
+  var title;   // book title
+  var date;    // book club meeting date
+  
+  if (!form.checkValidity()) {
+    document.getElementById("error").style.display = "block";
+  }
+  else {
+    document.getElementById("error").style.display = "none";
+    document.getElementById("mtgHeader").style.display = "block";
+    author = form.elements["author"].value;
+    title = form.elements["title"].value;
+    date = new Date(form.elements["date"].value);
+    
+    bookMtgList.push(new BookMeeting(author, title, date));
+    bookMtgList.sort(
+      function (a, b) {
+        return (a.date < b.date) ? -1 : (a.date > b.date) ? 1 : 0;
+      }
+    ); // end sort
+    displayList();
+  } // end else
+} // end addMtg
+
+//******************************************************************
+
+// Display the list of book club meetings.
+
+function displayList() {
+  var listContent = ""; // The contents of the list of book meetings
+  
+  for (let i=0; i<bookMtgList.length; i++) {
+    listContent += bookMtgList[i].bookMtgEntry(i);
+  }
+  document.getElementById("list").innerHTML = listContent;
+} // end displayList
+
+function deleteMtg(index) {
+  bookMtgList.splice(index, 1);
+  displayList();
+} // end deleteMtg
