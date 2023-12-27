@@ -12,8 +12,6 @@ while (x > 0) {
 alert(msg);
 ```
 
-#### My answer: 
-
 The alert dialog will display the message: "Usie: 3 2 1".
 
 ### 2. Assume the following code is part of a working web page. The following code is supposed to display the sum of 1 through 4 (with a dialog that says “Sum = 10”) and the product of 1 through 4 (with a dialog that says “Product = 24”). Find the errors and fix them.
@@ -31,8 +29,6 @@ while (count < 4) {
   count++;
 }
 ```
-
-#### My answer:
 
 Here's the fixed code:
 
@@ -68,8 +64,6 @@ userTurn = !userTurn;
 console.log("computer points: " + computerPoints);
 ```
 
-#### My answer:
-
 After three iterations through the `do...while` loop, the message displayed in the console will be:
 
 ```
@@ -77,8 +71,6 @@ computer points: 1
 ```
 
 ### 4. Suppose you have a variable named `quantity` that holds a number. Provide an `if` statement heading that checks to see whether quantity holds a whole number.
-
-#### My answer:
 
 Whole numbers are positive numbers, including zero, without any decimal or fractional parts. Here's the `if` statement heading that checks these conditions:
 
@@ -130,8 +122,6 @@ if (Number.isInteger(quantity) && quantity >= 0) {
 </html>
 ```
 
-#### My answer:
-
 Here's the modified `<script>` element with the `while` loop replaced with a `for` loop:
 
 ```html
@@ -157,13 +147,9 @@ Here's the modified `<script>` element with the `while` loop replaced with a `fo
 
 ### 6. The web page code in the prior exercise generates the factorial for a user-entered number. Why would it be inappropriate to replace the `while` loop with a `for...of` loop?
 
-#### My answer:
-
 The `for...of` loop in JavaScript is used to iterate over arrays, strings, maps, sets, and more. This kind of loop iterates through each element in the array, which isn't our case.
 
 ### 7. Provide code that generates the following radio button group. You don’t need to provide code for a complete web page - just the code for a CSS rule and a container that generates the radio buttons, the border, and the border’s caption.
-
-#### My answer:
 
 ```html
 <style>
@@ -180,13 +166,9 @@ The `for...of` loop in JavaScript is used to iterate over arrays, strings, maps,
 
 ### 8. CSS uses the name `background-color` for the property that defines the background color for an element. JavaScript uses the name `backgroundColor` for the associated property in the JavaScript world. Using the same spelling would make things easier on web developers. So why didn’t JavaScript’s inventor use `background-color` for the JavaScript property name?
 
-#### My answer:
-
 JavaScript and CSS were developed separately. In coming up with names for the object's properties, JavaScript’s designer (Brendan Eich) probably wanted to mimic CSS names, but realized the hyphen would be interpreted as a minus sign in JavaScript and that would lead to errors.
 
 ### 9. The `className` property stores an element’s `class` attribute value as a string. If the `class` attribute has multiple values, those values are separated by spaces. To add or remove values, you have to process those space separators. The `classList` property stores an element’s `class` attribute value as a collection of values. To add or remove values, you can call its `add` or `remove` methods. How can Figure 10.15C’s `applyFontSelections` function be modified so it uses the `classList` property to add values to the message element’s class attribute?
-
-#### My answer:
 
 Here is the modified version of the `applyFontSelections` function:
 
@@ -220,8 +202,6 @@ var c = d = 20;
 console.log("a = " + ++a + ", b = " + b++ +
 "\nc = " + --c + ", d = " + d--);
 ```
-
-#### My answer:
 
 The `console.log` will display the following message:
 
