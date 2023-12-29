@@ -8,11 +8,16 @@
   function rectangleExamples() {
     var ctx; // the canvas object's context
     ctx = document.getElementById("canvas").getContext("2d");
-    ctx.fillStyle = "deepskyblue";
+    
+    gradient = ctx.createLinearGradient(0, 70, 0, 220);
+    gradient.addColorStop(0, "yellow");
+    gradient.addColorStop(0.5, "green");
+    gradient.addColorStop(1, "yellow");
+    ctx.fillStyle = gradient;
     ctx.fillRect(20, 80, 70, 140);
     
     ctx.lineWidth = 20;
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = "deepskyblue";
     ctx.strokeRect(140, 80, 70, 140);
     
     ctx.fillRect(260, 80, 70, 140);
