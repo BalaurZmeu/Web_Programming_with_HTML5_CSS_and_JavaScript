@@ -5,12 +5,16 @@
 <meta name="author" content="John Dean">
 <title>Solar Shadowing</title>
 <link rel="stylesheet" href="../../common/style/electro.css">
-<script src="solar_shadowing.js"></script>
+<script src="solar_angles.js"></script>
 <style>
   body {text-align: center;}
   form {margin: 10px auto;}
+  input {
+    margin-top: 5px;
+    margin-right: 15px;
+  }
   canvas {
-    margin: -20px auto;
+    margin: 20px auto;
     border: 3px solid black;
     background-color: lightgray;
     transition: background 0.2s;
@@ -26,10 +30,29 @@
   Latitude (Deg):
   <input id="latitude" type="text" size="3" value="46">
   Base Spacing / Panel Height:
-  <input id="spacing" type="text" size="3" value="1.8">
+  <input id="spacing" type="text" size="3" value="1.8"><br>
   Clearance / Panel Height:
-  <input id="clearance" type="text" size="3" value="0.2"><br>
-</form>
+  <input id="clearance" type="text" size="3" value="0.2">
+  Panel Slope (Deg):
+  <input id="panelSlope" type="text" size="3" value="45">
+  <input type="button" value="Install Collectors"
+    onclick="setup(this.form);"><br>
+  Month (0 to 12):
+  <input id="month" type="text" size="3" value="1">
+  Hour (0 to 24):
+  <input id="hour" type="text" size="3" value="12">
+  <input type="button" value="Show Behavior"
+    onclick="showBehavior(this.form);"><br>
+  Azimuth (Deg):  <!-- clockwise from north -->
+  <input id="azimuth" type="text" size="3" readonly="readonly">
+  Altitude (Deg):
+  <input id="altitude" type="text" size="3" readonly="readonly"><br>
+  <input id="run" type="button" value="Run Clock"
+    onclick="runClock(this.form);">
+  <input id="stop" type="button" value="Stop Clock"
+    onclick="stopClock(this.form);"><br>
+</form><br>
+
 <canvas id="topView" width="700" height="300"></canvas>
 <p>
   This shows a top view of two solar-collector arrays mounted
