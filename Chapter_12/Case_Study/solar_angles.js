@@ -27,4 +27,21 @@ function setup(form) {
   image = document.getElementById("pvArray");
   spacing = length * parseFloat(form.elements["spacing"].value);
   slope = form.elements["panelSlope"].value * Math.PI/180;
+  canvas = document.getElementById("topView");
+  context = canvas.getContext("2d");
+  canvas.style.backgroundColor = "lightgray";
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = "black";
+  context.font = "1em Tahoma";
+  context.fillText("(North)", 324, 20);
+  if (slope < 0) {        // north-facing panels
+    YO = 0.5 * (canvas.height - spacing - length);
+    dyP = + length * Math.cos(slope); // south end higher
+  }
+  else {                  // south-facing panels
+    YO = 0.5 * (canvas.height - spacing + length);
+    dyP = - length * Math.cos(slope); // north end higher
+  }
+  drawOneArray(YO);
+  drawOneArray(YO + spacing);
 } // end setup
