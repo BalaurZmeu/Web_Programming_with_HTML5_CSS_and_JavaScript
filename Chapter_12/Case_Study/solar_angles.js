@@ -45,3 +45,26 @@ function setup(form) {
   drawOneArray(YO);
   drawOneArray(YO + spacing);
 } // end setup
+
+/****************************************************************/
+
+function drawOneArray(yO) {
+  var scaleFac;   // horizontal projection of sloping surface
+  var width;      // image width
+  
+  scaleFac = Math.cos(slope);
+  width = image.width;
+  // Scale vertically to represent top view of sloping panels
+  context.scale(1.0, scaleFac);
+  if (slope >= 0) {yO -= length * scaleFac;}
+  context.drawImage(image, 50, yO / scaleFac);
+  context.scale(1.0, 1.0 / scaleFac);
+  // Apply white line to brighten sunlit higher end
+  context.strokeStyle = "white";
+  context.lineWidth = 3;
+  context.beginPath();
+  if (slope < 0) {yO += length * scaleFac;}
+  context.moveTo(XO, yO);
+  context.lineTo(XO + width, yO);
+  context.stroke();
+} // end drawOneArray
