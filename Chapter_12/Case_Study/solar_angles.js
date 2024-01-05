@@ -102,8 +102,8 @@ function showBehavior() {
   } // end if daytime
   else {                        // nighttime
     canvas.style.backgroundColor = "midnightblue";
-    form.elements.["azimuth"].value = "";
-    form.elements.["altitude"].value = "";
+    form.elements["azimuth"].value = "";
+    form.elements["altitude"].value = "";
     output = 0;
   } // end nighttime
   context.fillStyle = "black";
@@ -115,6 +115,7 @@ function showBehavior() {
 /****************************************************************/
 
 // This function is called from the showBehavior function
+// it calculates angles
 
 function computeAngles() {
   var latitude;          // earth latitude
@@ -152,3 +153,42 @@ function computeAngles() {
     if (cosIncidenceAngle < 0) {cosIncidenceAngle = 0.0;}
   } // end if altitude > 0
 } // end computeAngles
+
+/****************************************************************/
+
+// This function is called from the showBehavior function
+// it calculates the coordinates of the shadow and draws it
+
+function showOneShadow(xO, yO) {
+  var xB;    // horizontal position of bottom-left shadow corner
+  var yB;    // vertical position of bottom-left shadow corner
+  var xT;    // horizontal position of top-left shadow corner
+  var yT;    // vertical position of top-left shadow corner
+  var clearance;   // distance from roof to lower edge of panels
+  var totalHeight; // distance from roof to upper edge of panels
+  var botDxS;      // bottom-left horizontal shadow offset
+  var botDyS;      // bottom-left vertical shadow offset
+  var topDxS;      // top-left horizontal shadow offset
+  var topDyS;      // top-left vertical shadow offset
+  var width;       // image width (600 pixels)
+  
+  clearance = length *
+    parseFloat(form.elements["clearance"].value);
+  totalHeight = clearance + length * Math.abs(Math.sin(slope));
+  botDxS = -Math.sin(azimuth) * clearance / Math.tan(altitude);
+  botDyS = Math.cos(azimuth) * clearance / Math.tan(altitude);
+  topDxS = -Math.sin(azimuth) * totalHeight / Math.tan(altitude);
+  topDyS = Math.cos(azimuth) * totalHeight / Math.tan(altitude);
+  width = image.width;
+  xB = xO + botDxS;
+  yB = yO + botDyS;
+  xT = xO + topDxS;
+  yT = yO + dyP + topDyS;
+  context.beginPath();
+  context.moveTo(xB, yB);
+  context.lineTo(xT, yT);
+  context.lineTo(xT + width, yT);
+  context.lineTo(xB + width, yB);
+  context.fillStyle = "gray";
+  context.fill();
+} // end showOneShadow
