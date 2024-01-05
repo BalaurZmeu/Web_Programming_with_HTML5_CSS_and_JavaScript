@@ -23,8 +23,9 @@ var timer;                // timer controlling display dynamics
 // This function is called when the Install Collectors button
 // is clicked
 
-function setup(form) {
+function setup(solarForm) {
   image = document.getElementById("pvArray");
+  form = solarForm;
   spacing = length * parseFloat(form.elements["spacing"].value);
   slope = form.elements["panelSlope"].value * Math.PI/180;
   canvas = document.getElementById("topView");
@@ -110,3 +111,44 @@ function showBehavior() {
   context.fillText("Electrical Output: " + output + " %", 10, 25);
   context.fillText("(North)", 324, 20);
 } // end showBehavior
+
+/****************************************************************/
+
+// This function is called from the showBehavior function
+
+function computeAngles() {
+  var latitude;          // earth latitude
+  var month;             // month number (1 = Jan, 2 = Feb, ...)
+  var hour;              // hour of day
+  // Using 1985 ASHRAE Fundamentals Guide, Chapter 27, Table 1,
+  // and approximating earth's elliptical orbit as a circle:
+  var solarDeclination;  // solar altitude angle ot north pole
+  var hourAngle;         // angle after noon in radians
+  var cosAzimuth;        // horizontal solar angle from south (rad)
+  // Using 1985 ASHRAE Fundamentals Guide, Chapter 27, equation 3:
+  var sinAltitude;       // solar altitude in radians
+  
+  latitude = form.elements["latitude"].value * Math.PI / 180;
+  month = form.elements["month"].value;
+  hour = form.elements["hour"].value;
+  solarDeclination = (-23.45 * Math.PI / 180) *
+    Math.cos(month * Math.PI / 6);
+  hourAngle = Math.abs((hour - 12) * Math.PI / 12);
+  cosAzimuth = 0;
+  sinAltitude = Math.cos(hourAngle) *
+    Math.cos(latitude) * Math.cos(solarDeclination) +
+      Math.sin(latitude) * Math.sin(solarDeclination);
+  altitude = Math.asin(sinAltitude * 0.999999);
+  if (altitude > 0) {
+    // Using 1985 ASHRAE Fundamentals Guide, Chapter 27, eq. 4:
+    cosAzimuth =
+      (Math.sin(solarDeclination) -
+        sinAltitude * Math.sin(latitude)) /
+          (Math.cos(altitude) * Math.cos(latitude));
+    azimuth = Math.acos(cosAzimuth * 0.999999);
+    azimuth = (hour <= 12) ? azimuth : 2 * Math.PI - azimuth;
+    cosIncidenceAngle = sinAltitude * Math.cos(slope) -
+      cosAzimuth * Math.cos(altitude) * Math.sin(slope);
+    if (cosIncidenceAngle < 0) {cosIncidenceAngle = 0.0;}
+  } // end if altitude > 0
+} // end computeAngles
