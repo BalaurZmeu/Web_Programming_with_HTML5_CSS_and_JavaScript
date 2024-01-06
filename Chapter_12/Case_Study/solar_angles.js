@@ -192,3 +192,38 @@ function showOneShadow(xO, yO) {
   context.fillStyle = "gray";
   context.fill();
 } // end showOneShadow
+
+/****************************************************************/
+
+// This function is called from the showBehavior function
+// it calculates and draws the shadow projected on the panel
+
+function getObscuration(xO, yO) {
+  var latitude;        // earth latitude
+  var projLength;      // north-south horizontal projection
+  var width;           // east-west width of panel array
+  var tanShadeAngle;   // tan (shade angle)
+  var shadeLength;     // upward in panel plane
+  var offset;          // east-west shadow offset
+  var obscuredWidth;   // east-west inter-panel shadow extent
+  var obscuration = 0; // fractional inter-panel shadowing
+  
+  latitude = form.elements["latitude"].value * Math.PI / 180;
+  projLength = image.height * Math.cos(slope);
+  width = image.width;
+  context.globalAlpha = 0.4;      // shadow opacity
+  context.fillStyle = "black";
+  
+  // Sun behind the panels
+  if (cosIncidenceAngle <= 0) {
+    // cover bottom edge but keep top edge white
+    if (slope > 0) {yO = yO + 2 - projLength;}
+    context.fillRect(xO, yO - 1, width, projLength);
+  } // end if
+  
+  // Inter-panel shading
+  else if (Math.cos(azimuth) * (yO - 0.5 * canvas.height) > 0 &&
+    latitude * slope > 0) {
+    tanShadeAngle = Math.tan()
+  } // end else if
+} // end getObscuration
