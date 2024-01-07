@@ -19,6 +19,7 @@ var altitude;             // solar altitude angle above horizon
 var azimuth;              // solar azimuth angle from south
 var cosIncidenceAngle;    // angle between sun and normal to panel
 var timer;                // timer controlling display dynamics
+var latitude;             // earth latitude
 
 // This function is called when the Install Collectors button
 // is clicked
@@ -45,6 +46,8 @@ function setup(solarForm) {
   }
   drawOneArray(YO);
   drawOneArray(YO + spacing);
+  form.elements["behavior"].disabled = "";
+  form.elements["run"].disabled = "";
 } // end setup
 
 /****************************************************************/
@@ -118,7 +121,6 @@ function showBehavior() {
 // it calculates angles
 
 function computeAngles() {
-  var latitude;          // earth latitude
   var month;             // month number (1 = Jan, 2 = Feb, ...)
   var hour;              // hour of day
   // Using 1985 ASHRAE Fundamentals Guide, Chapter 27, Table 1,
@@ -199,7 +201,6 @@ function showOneShadow(xO, yO) {
 // it calculates and draws the shadow projected on the panel
 
 function getObscuration(xO, yO) {
-  var latitude;        // earth latitude
   var projLength;      // north-south horizontal projection
   var width;           // east-west width of panel array
   var tanShadeAngle;   // tan (shade angle)
@@ -208,7 +209,6 @@ function getObscuration(xO, yO) {
   var obscuredWidth;   // east-west inter-panel shadow extent
   var obscuration = 0; // fractional inter-panel shadowing
   
-  latitude = form.elements["latitude"].value * Math.PI / 180;
   projLength = image.height * Math.cos(slope);
   width = image.width;
   context.globalAlpha = 0.4;      // shadow opacity
@@ -249,4 +249,35 @@ function getObscuration(xO, yO) {
 
 /****************************************************************/
 
+function runClock() {
+  timer = window.setInterval(updateDisplay, 200); // 200ms (0.2sec)
+  form.elements["run"].disabled = "disabled";
+  form.elements["stop"].disabled = "";
+} // end runClock
 
+function updateDisplay() {   // after each interval
+  var mo;     // month number
+  var hr;     // hour number
+  var nextHr; // next hour as fraction of day
+  
+  mo = parseInt(form.elements["month"].value);
+  hr = parseInt(form.elements["hour"].value);
+  nextHr = (hr + 1) % 24;
+  if (nextHr < hr) {
+    nextHr = 0;
+    mo += 1;
+    if (mo > 12) {
+      stopClock();
+      mo = 1;
+    }
+    form.elements["month"].value = mo;
+  }
+  form.elements["hour"].value = nextHr;
+  showBehavior(form);
+} // end updateDisplay
+
+function stopClock() {
+  window.clearInterval(timer);
+  form.elements["stop"].disabled = "disabled";
+  form.elements["run"].disabled = "";
+} // end stopClock

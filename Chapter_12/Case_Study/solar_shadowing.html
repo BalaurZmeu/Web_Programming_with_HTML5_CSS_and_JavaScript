@@ -41,16 +41,16 @@
   <input id="month" type="text" size="3" value="1">
   Hour (0 to 24):
   <input id="hour" type="text" size="3" value="12">
-  <input type="button" value="Show Behavior"
-    onclick="showBehavior(this.form);"><br>
+  <input id="behavior" type="button" value="Show Behavior"
+    onclick="showBehavior(this.form);" disabled><br>
   Azimuth (Deg):  <!-- clockwise from north -->
   <input id="azimuth" type="text" size="3" readonly="readonly">
   Altitude (Deg):
   <input id="altitude" type="text" size="3" readonly="readonly"><br>
   <input id="run" type="button" value="Run Clock"
-    onclick="runClock(this.form);">
+    onclick="runClock(this.form);" disabled>
   <input id="stop" type="button" value="Stop Clock"
-    onclick="stopClock(this.form);"><br>
+    onclick="stopClock(this.form);" disabled><br>
 </form><br>
 
 <canvas id="topView" width="700" height="300"></canvas>
@@ -72,6 +72,16 @@
   shadows fall. A whole number for Month specifies the 21st day
   of that month (3 is March 21). For other times like April 1
   at 2:30 PM, use fractions: Month = 3.35 and Hour = 14.5.
+</p>
+<p>
+  When you click the Run Clock button, the hours value steps
+  sequentially through the remaining hours in the current day,
+  with a new hour value every .2-second intervals. The program
+  should simulate a full year in a reasonable amount of time, so
+  the web page shows the hours incrementing through just one day
+  of each month. After one day’s worth of simulation (i.e., when
+  the hours value reaches 24), the program jumps to the next month
+  and simulates one day in that month.
 </p>
 </body>
 </html>
