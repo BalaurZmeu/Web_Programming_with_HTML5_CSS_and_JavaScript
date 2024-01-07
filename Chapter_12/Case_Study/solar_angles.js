@@ -224,6 +224,29 @@ function getObscuration(xO, yO) {
   // Inter-panel shading
   else if (Math.cos(azimuth) * (yO - 0.5 * canvas.height) > 0 &&
     latitude * slope > 0) {
-    tanShadeAngle = Math.tan()
+    tanShadeAngle = Math.tan(altitude) /
+      Math.cos(azimuth - Math.PI);
+    shadeLength = length - spacing /
+      (Math.cos(slope) + Math.sin(slope) / tanShadeAngle);
+    if (shadeLength < 0) {shadeLength = 0;} // no obscuration
+    projLength = shadeLength * Math.cos(slope);
+    offset = Math.abs(Math.tan(azimuth) *
+      (spacing + projLength - length * Math.cos(slope)));
+    if (slope > 0) {yO += 1;}  // cover image bottom
+    else {projLength = -projLength;}
+    if (Math.sin(azimuth) < 0) {
+      context.fillRect(xO + offset, yO,
+        width - offset, -projLength);
+    }
+    else {context.fillRect(xO, yO, width - offset, -projLength);}
+    obscuration = (shadeLength * (width - offset)) /
+      (length * width);
+    if (obscuration < 0) {obscuration = 0;}
   } // end else if
+  context.globalAlpha = 1.0;
+  return obscuration;
 } // end getObscuration
+
+/****************************************************************/
+
+
