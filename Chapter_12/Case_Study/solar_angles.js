@@ -21,6 +21,20 @@ var cosIncidenceAngle;    // angle between sun and normal to panel
 var timer;                // timer controlling display dynamics
 var latitude;             // earth latitude
 
+/****************************************************************/
+
+// This function disables the "Show Behavior", "Run Clock", and
+// "Stop Clock" buttons. This prevents them from being clicked
+// before the "Install Collectors" button, which can lead to errors
+
+function disableButtons() {
+  document.getElementById("behavior").disabled = "disabled";
+  document.getElementById("run").disabled = "disabled";
+  document.getElementById("stop").disabled = "disabled";
+} // end disableButtons
+
+/****************************************************************/
+
 // This function is called when the Install Collectors button
 // is clicked
 
