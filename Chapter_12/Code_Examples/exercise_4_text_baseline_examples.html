@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Balaur Zmeu">
+<title>Text Baseline Examples</title>
+<script>
+function displayExamples() {
+  var ctx;
+  ctx = document.getElementById("canvas").getContext("2d");
+  ctx.font = "25px serif";
+  ctx.strokeStyle = "springgreen";
+  ctx.lineWidth = 2;
+  yValues = [40, 80, 120, 160];
+  lineValues = ["alphabetic", "bottom", "middle", "top"];
+  var y;
+  
+  for (let i=0; i<4; i++) {
+    ctx.textBaseline = lineValues[i];
+    ctx.beginPath();
+    y = yValues[i];
+    ctx.moveTo(0, y);
+    ctx.lineTo(650, y);
+    ctx.stroke();
+    ctx.fillText("For this text, textBaseline=\"" +
+      lineValues[i] + "\" & y=" + y + ".", 10, y);
+  } // end for loop
+} // end displayExamples
+</script>
+</head>
+
+<body onload="displayExamples();">
+<canvas id="canvas" width="700" height="210">
+</canvas>
+</body>
+</html>

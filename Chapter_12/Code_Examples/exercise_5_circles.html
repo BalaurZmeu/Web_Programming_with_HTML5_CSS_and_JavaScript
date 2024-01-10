@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Balaur Zmeu">
+<title>Five Circles</title>
+<script>
+function drawCircles() {
+  var ctx;
+  var x = 80;
+  var y = 35;
+  var radius = 25;
+  ctx = document.getElementById("canvas").getContext("2d");
+  ctx.strokeStyle = "darkviolet";
+  ctx.fillStyle = "lavender";
+  ctx.lineWidth = 4;
+  
+  for (let i=0; i<5; i++) {
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.stroke();
+    x += 3 * radius;
+  } // end for loop
+} // end drawCircles
+</script>
+</head>
+
+<body onload="drawCircles();">
+<canvas id="canvas" width="700" height="210">
+</canvas>
+</body>
+</html>
