@@ -6,7 +6,6 @@
 <title>Combination Lock</title>
 <style>
   body {text-align: center;}
-  canvas {border: thin solid black;}
   input {margin: 0 5px;}
 </style>
 <script src="combination_lock.js"></script>
@@ -17,14 +16,14 @@
 </canvas>
 <br><br>
 <input type="button" value="Nudge left"
-  onclick="nudge("left");">
+  onclick="turn('left');">
 <input type="button" value="Nudge right"
-  onclick="nudge("right");"><br><br>
+  onclick="turn('right');"><br><br>
 Target:
 <input type="text" id="numField" size="5">
 <input type="button" value="Left to target"
-  onclick="toTarget("left");">
+  onclick="toTarget('left');">
 <input type="button" value="Right to target"
-  onclick="toTarget("right");">
+  onclick="toTarget('right');">
 </body>
 </html>

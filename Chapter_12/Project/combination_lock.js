@@ -23,6 +23,7 @@ var ctx;    // canvas object's context
 function initialize() {
   ctx = document.getElementById("canvas").getContext("2d");
   drawLock();
+  drawNumbers();
 } // end initialize
 
 /***************************************************************/
@@ -99,11 +100,33 @@ function drawDial() {
 
 /***************************************************************/
 
-// This function draws the numbers and the logo
+// This function draws forty marks and numbers,
+// and also the logo
 
 function drawNumbers() {
+  ctx.strokeStyle = "white";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.font = "bold 22px Helvetica, sans-serif";
   for (let i=0; i<40; i++) {
-  
+    if (i % 5 == 0) {
+      ctx.beginPath();
+      ctx.moveTo(CENTER_X, CENTER_Y - 134);
+      ctx.lineTo(CENTER_X, CENTER_Y - 118);
+      ctx.stroke();
+      ctx.fillText(i, CENTER_X, CENTER_Y - 95);
+    } // end if
+    else {
+      ctx.beginPath();
+      ctx.moveTo(CENTER_X, CENTER_Y - 134);
+      ctx.lineTo(CENTER_X, CENTER_Y - 124);
+      ctx.stroke();
+    }
+    ctx.translate(CENTER_X, CENTER_Y);  
+    ctx.rotate((2 * Math.PI) / 40);
+    ctx.translate(-CENTER_X, -CENTER_Y);
   }
+  ctx.font = "bolder 22px serif";
+  ctx.textBaseline = "middle";
+  ctx.fillText("Dogo", CENTER_X, CENTER_Y);
 } // end drawNumbers
-
