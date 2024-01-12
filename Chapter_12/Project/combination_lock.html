@@ -20,10 +20,12 @@
 <input type="button" value="Nudge right"
   onclick="turn('right');"><br><br>
 Target:
+<form>
 <input type="text" id="numField" size="5">
 <input type="button" value="Left to target"
-  onclick="toTarget('left');">
+  onclick="toTarget('left', this.form);">
 <input type="button" value="Right to target"
-  onclick="toTarget('right');">
+  onclick="toTarget('right', this.form);">
+</form>
 </body>
 </html>
