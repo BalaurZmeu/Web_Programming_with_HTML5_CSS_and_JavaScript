@@ -1,8 +1,6 @@
-# The last chapter isn't finished yet
+# "Web Programming with HTML5, CSS and JavaScript" by John Dean
 
-### Chapters 1 through 11 are finished.
-
-Code examples, projects, solutions to exercises, and answers to review questions for the book "Web Programming with HTML5, CSS and JavaScript" by John Dean.
+### Code examples, projects, solutions to exercises, and answers to review questions for the book
 
 John Dean's book is great for understanding the basics of web programming. I highly recommend that you solve all exercises by yourself. Don't copy-paste blindly without understanding the examples.
 

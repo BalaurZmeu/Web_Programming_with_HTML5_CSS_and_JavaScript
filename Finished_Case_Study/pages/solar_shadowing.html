@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="John Dean">
+<title>Solar Shadowing</title>
+<link rel="stylesheet" href="../../common/style/electro.css">
+<style>
+  body {text-align: center;}
+  form {margin: 10px auto;}
+  input {
+    margin-top: 5px;
+    margin-right: 15px;
+  }
+  canvas {
+    margin: 20px auto;
+    border: 3px solid black;
+    background-color: lightgray;
+    transition: background 0.2s;
+  }
+</style>
+<script src="solar_angles.js"></script>
+<script src="navigation.js"></script>
+</head>
+
+<body onload="createHeaderFooter(); disableButtons();">
+<img id="pvArray" alt="Photovoltaic pannels" hidden
+  src="../images/pv_array.png">
+<h2>Solar Shadowing by Collector Array</h2>
+<form>
+  Latitude (Deg):
+  <input id="latitude" type="text" size="3" value="46">
+  Base Spacing / Panel Height:
+  <input id="spacing" type="text" size="3" value="1.8"><br>
+  Clearance / Panel Height:
+  <input id="clearance" type="text" size="3" value="0.2">
+  Panel Slope (Deg):
+  <input id="panelSlope" type="text" size="3" value="45">
+  <input type="button" value="Install Collectors"
+    onclick="setup(this.form);"><br>
+  Month (0 to 12):
+  <input id="month" type="text" size="3" value="1">
+  Hour (0 to 23):
+  <input id="hour" type="text" size="3" value="12">
+  <input id="behavior" type="button" value="Show Behavior"
+    onclick="showBehavior(this.form);"><br>
+  Azimuth (Deg):  <!-- clockwise from north -->
+  <input id="azimuth" type="text" size="3" readonly="readonly">
+  Altitude (Deg):
+  <input id="altitude" type="text" size="3" readonly="readonly"><br>
+  <input id="run" type="button" value="Run Clock"
+    onclick="runClock(this.form);">
+  <input id="stop" type="button" value="Stop Clock"
+    onclick="stopClock(this.form);"><br>
+</form><br>
+
+<canvas id="topView" width="700" height="300"></canvas>
+<p>
+  This shows a top view of two solar-collector arrays mounted
+  above a light-gray flat roof. Darkened areas show shadowing.
+  At night solar collectors are not visible and everything is
+  midnight blue.
+</p>
+<p>
+  Modify values in Latitude, Spacing/Height, Clearance/Height,
+  and Panel Slope input boxes and click Install Collectors to
+  display the two collector arrays with illuminated (wider white)
+  top edge.
+</p>
+<p>
+  Modify values in Month and Hour inputs and click Show Behavior
+  to see Azimuth. Altitude, relative Electrical Output, and how
+  shadows fall. A whole number for Month specifies the 21st day
+  of that month (3 is March 21). For other times like April 1
+  at 2:30 PM, use fractions: Month = 3.35 and Hour = 14.5.
+</p>
+<p>
+  When you click the Run Clock button, the hours value steps
+  sequentially through the remaining hours in the current day,
+  with a new hour value every .2-second intervals. The program
+  should simulate a full year in a reasonable amount of time, so
+  the web page shows the hours incrementing through just one day
+  of each month. After one day’s worth of simulation (i.e., when
+  the hours value reaches 24), the program jumps to the next month
+  and simulates one day in that month.
+</p>
+</body>
+</html>
